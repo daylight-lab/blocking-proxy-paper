@@ -1,0 +1,582 @@
+#+title: Website Blocking as a Proxy of Policy Alignment
+# #+subtitle: 
+#+author: Nick Merrill
+#+options: num:nil toc:nil
+#+date: [2020-08-11 Tue]
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css"/>
+#+HTML_HEAD: <script type="text/javascript" src="index.bundle.js"></script>
+
+* Introduction
+
+In international politics and political economy, the primitive unit of analysis
+is frequenty the /state/. One of the important observations is how and when
+states “align” with each other. Do they support each other when it comes to
+conflict with a third party? Do they trade more than one would expect? Since
+formal trade agreements (e.g., EEA) and formal alliances (e.g., NATO) only
+capture certain aspects of states’ alignment, researchers have looked for other
+measures of policy alignment to fill in the gaps.
+
+This work introduces a new proxy of policy alignment: website blocking. This
+proxy is particularly interesting because it speaks to the information flow in
+the digital layer of international politics, a new element to international
+trade and cooperation, one which existing proxy metrics fail to capture a
+priori. In addition, our proxy measure can be constantly scraped and updated,
+offering a higher temporal resolution than existing proxies.
+
+Big ideas:
+- Our work suggests a link between Internet governance and other issues in international relations
+- Since we can capture our metric in real time, we can use changes in our proxy
+  to detect possible changes in the IR landscape faster than would otherwise be
+  possible
+# - we are suggesting our proxy for application to your domain of interest
+
+* Background
+** Policy alignment
+Given two countries, policy alignment refers to the degree to which policies in
+those two countries are similar along some set of dimensions. Since a country's
+policy stance on any given set of issues is complex and situated to the point of
+being unobservable in a measurable way, proxies of policy stances are used.
+
+UN voting patterns provide an illustrative example. If two countries vote the
+same way in the UN, that's a proxy of policy alignment. UN votes don't carry a
+lot of weight in practice, but if we assume that countries cast votes on the
+basis of their overall policy positions (i.e., rather than strategically, or
+symbolically) then countries that vote similarly are more likely to have similar
+policies than countries that vote differently. The core concept here is that
+countries do not need to be actively collaborating (e.g., in formal agreements)
+to show policy alignment (though they might be). They may be voting the same way
+because of some underlying, driving causal factor (e.g., a shared ideology, or
+shared geopolitical goals).
+
+In practice, the notion of 'alignment' is used as a predictive variable for
+other phenomena of interest, including but not limited to formal treaties and
+alliances. Two countries that have high policy alignment are more likely to
+support each other in a conflict with a third party, for example, than two
+countries with low policy alignment.
+
+In this project, we're trying to use similarities in webpage blocking patterns
+to achieve a similar goal. If two countries block the "same" thing (more on that
+in a minute), that's a proxy of policy alignment. They may not have conferred,
+but their blocking decision reveals a shared outlook or set of geopolitical
+goals.
+
+#+CAPTION: Different proxies of policy alignment create connected graphs of countries. We can compare these proxies across topic areas. Our project adds a new topic area of the Internet.
+#+LABEL: fig:proxies
+[[./img/proxies.png]]
+
+Compared to existing proxies, ours captures a new domain: Internet governance.
+The Internet is a relatively new domain of International policy competition, as
+well as a new domain in which trade, cooperation and conflict all take place. In
+addition, we can collect data on our metric continuously, allowing us to detect
+changes in policy alignment much more quickly than other metrics can afford.
+** Webpage blocking
+One critical component of Internet governance is webpage blocking. Website
+blocking is typically perpetrated directly by governments. From a technical
+standpoint, there are a variety of ways to block webpages. One option is to
+manipulate domain name system (DNS) messages in order to make websites appear
+unresolveable. Another option is to drop TCP handshake packages with particular
+destination IPs, effectively making IP addresses impossible to contact. A
+related option is to allow the TCP handshake to occur, but inject follow-up TCP
+packets that either break or supersede the legitimate response. Yet another
+option is to make a legal case to a particular service provider (for example,
+asking Facebook to block a page in a particular country).
+
+[[http://iclab.org/][ICLab]], a longitudinal corpus of website blocking events, seeks to deal with this
+diversity in blocking strategies. It focuses on consistency in blocking
+measurements across countries and over time. As of this writing, the ICLab has
+collected twelve datasets ranging from January, 2017 to September, 2018. In this
+paper, we use the ICLab dataset to produce a proxy of policy alignment with
+respect to Internet governance.
+
+* Methods
+Before each of these experiments, we cleaned and pre-processed the data. See
+Appendix for details.
+** Attempt 1: Strict overlap
+The simplest proxy of policy overlap would be to measure exact overlaps in
+blocked websites between countries. When two countries block the same thing,
+that's a signal of policy alignment in our model. To compute our metric, we
+first find the web pages that appear to be blocked in each country, grouping by
+the ICLab data’s country column. Because no webpages are known to be blocked in
+the US, we consider any sites in the US grouping to be false positives (perhaps
+due to websites blocking known VPN endpoints; see Limitations) and filter the
+corresponding domain-suffixes out of every country’s blocked list in the cleaned
+dataset.
+
+This is straightforward in principle, but in practice, yields minimal variation
+in the data. During development, we found that there's not much overlap in exact
+URLs between countries, generally speaking. Even countries with relatively high
+blocking in our dataset have minimal overlap. For most pairs of countries in our
+dataset, this method yields no overlaps at all.
+
+** Attempt 2: Fuzzy overlap
+To get around the lack of strict overlaps in website blocking, we next attempted
+to measure fuzzy overlaps in blocking between countries. Consider the webpage
+facebook.com/some-page and the webpage facebook.com/different-page. If Country Y
+blocks the first and Country Z blocks the second, is that overlap? By the strict
+method, no, this would not count as overlap. By this fuzzy method, it would:
+they're both interfering with the same root domain, which we will refer to as a
+“domain” (rather than ”webpage”). To achieve this, we performed the same steps
+as in Experiment 1, but used Python’s tldextract library to separate domains and
+suffixes from site urls. We removed any duplicate domain-suffix pairs.
+
+However, we still observe very little overlap with this approach. For example,
+Turkey and Russia have 121 and 340 blocking events in our dataset, respectively,
+but only 23 websites in common.
+
+** Attempt 3: Overlap in content of blocked webpages
+Not only do the Experiment 1 and Experiment 2 methods produce minimal variation
+in the data, they also lose some important sources of variation: the themes of
+the content these two countries are interested in blocking. In some sense, this
+seems intuitively closer to the true source of variation we are seeking to
+measure. Two states may block different websites that are, in practical terms,
+“the same” in that both represent content that state is trying to exclude.
+
+Here's an illustrative example. India blocks Facebook pages that advocate for
+Muslim rights, especially regarding issues around Rohingya Muslims in Myanmar
+(see an [[https://wvww.facebook.com/plzsaveallmuslimlnburma][example here]]). While no other countries block Facebook pages to such a
+degree, other countries do block websites at the intersection of religion and
+political movements (Turkey, Saudia Arabia, Russia and more).
+
+Thus, we set out to measure thematic overlaps in blocked content between
+countries. Consider domain1.xyz and domain.abc. If they're both categorized as
+"religious," and two countries block them, we would consider this an overlap.
+While these categorizations necessarily lack granularity, it is common for
+widely-used metrics such as “press freedom” [] or “religious freedom” [] to
+categorize content at an analogous level (see Limitations for a further
+discussion on classification).
+
+ICLab settled on a similar technique, and used FortiGuard's URL categories.
+FortiGuard provides a “web filter” for corporations, allowing networks to block
+(for example) pornography or gambling sites. To make this service work,
+FortiGuard maintains a URL classification service, which returns a category for
+any given URL. FortiGuard [[https://fortiguard.com/webfilter/categories][maintains 87 different classifications]]. Their ontology
+is tailored toward the instrumental purpose of maintaining corporate web
+policies; we return to the implications of this ontology, as well as alternative
+ontologies, in our discussion and limitations sections.
+
+For each country, we take the FortiGuard classification of each URL. We are left
+with a set of classifications, which we can represent proportionally: we can
+represent the percentage each category contributes to the total set of a
+country’s blocked sites. One advantage of this method is that it is invariant to
+the number of blocked sites total, allowing comparisons between countries that
+block different numbers of sites.
+
+As an example, see a Figure [[fig:4country]], in which we see the relative blocking
+activity of four countries that are all very differently situated in the
+international order.
+ 
+ 
+#+CAPTION: Categories of websites that are blocked across Turkey, Russia, India and South Korea. We observe that these different countries block websites of various categories in different proportions. There appears to be meaningful variation in the data across countries.
+#+NAME: fig:4country
+[[./img/4country.png]]
+
+This graph strongly indicates that there is meaningful variation in our data
+between countries. Motivated by this variation, we devised a similarity metric
+by which we can compare any two countries.
+
+To compute this similarity metric, we interpret the percentage of websites
+blocked in each category as a set of coordinates in n-dimensional space (e.g.,
+{10, 20, 30, 40} if there were four categories). We can then compute the
+distance between any two coordinates using the spatial cosine distance. We are
+left with a distance between 0 and 1, which we can subtract from 1 to represent
+closeness (rather than distance) and then interpret as a percentage. By this
+metric, the similarity between India and South Korea is 20.4%. Between Turkey
+and Russia---countries which had only two domains in common in Experiment
+2---the similarity is 76.46%.
+
+* TODO Our proxy measure
+
+# TODO - force-directed doesn't bound in the 750px window; i have to specify style stuff
+#+BEGIN_EXPORT html
+<div id='fig1' style="height:750px; overflow:hidden;"></div>
+
+        <script>
+          index.initializeVisualization(
+            visId = 'fig1',
+            mapHeight = 750,
+            defaultFill = '#d3d3d3',
+            selectedFill = '#228B22',
+            highlightedFill = 'orange',
+            maxSimilarity = 1,
+            minSimilarity = 0,
+            highlightBorderWidth = 2,
+            numIncrements = 5,
+            digitsRounded = 2,
+            colorScheme = "schemeBlues",
+            defaultMode = "force",
+            enabledModes = ["force"],
+            tableProperties = ["similarity"],
+          );
+        </script>
+#+END_EXPORT
+#+CAPTION: Force-directed graph of similarities in our dataset. 
+#+LABEL: fig:force-directed
+[[./dummy.png]]
+
+#+CAPTION: Distribution of similarity metrics in our dataset. Most pairs of countries have a high similarity, with a long tail of pairs that have a low similarity.
+#+LABEL: fig:proxy-dist
+
+# TODO Embed interactive version
+
+This metric reveals a few patterns we would expect to see. Countries with little
+to no blocking (Israel, Iceland, USA, Finland) lie close together.
+
+However, the metric also reveals a few surprises. Venezuela has no website
+blocking despite a deteriorating human rights situation during the period these
+observations were collected []; it sits with other countries typically
+considered “free” or “open” in their approach to Internet governance (and, in
+popular imagination, free speech by extension).
+
+Another surprise: our metric also captures significant differences between
+countries typically considered to have “closed” internets. Saudi Arabia has a
+unique approach to blocking from any other “closed” Internet: it heavily
+censored material it finds morally objectionable (e.g., pornography). In
+contrast, India and Turkey block a mix of religious and political content, and
+the particular weights of each give them some distance from one another. 
+# TODO check this.
+
+China, which is popularly imagined to export its Internet to its Belt & Road
+allies, in fact has low similarity with such countries. It is relatively unique
+(no more than 60% similar to any other country), but is most similar to
+countries with which it has no close ties, such as Peru, France and Netherlands.
+# TODO How are they similar? Along what dimensions?
+
+Finally, our findings reveal a number of countries - the majority of our
+dataset - somewhere in the middle; relatively similar in blocking websites that
+are content similarity descriptor. A few thoughts on what this means.
+
+# A few general thoughts on the trends and patterns this analysis reveals; what we
+# learn about supposed allies, etc etc.
+
+The value of our findings can be, as suggested earlier, dual. First, our work
+provides a new and more dynamic metric of alignment that supplements existing
+metrics. In this section, we examined our metric in this context. Second, our
+work could provide a measure of cross-national information flows and Internet
+governance. The following section turns to this question, comparing our metric
+to existing measurements of policy and asking to what degree our measurement is
+distinctive, and to what degree it overlaps with traditional domains of
+measurement in international relations.
+
+* Comparisons to other domains
+
+How does Internet governance, as measured by our proxy metric, relate to other
+domains in international relations? 
+# LATER - summarize findings
+# LATER - highlight ‘leading indicator’ concept
+
+** Trade alliances: European Union (EU)
+<<eu>>
+
+The Internet is often described as both a cause and an effect of trade. As a
+cause, the Internet enables trade; countries have an incentive to converge on
+Internet governance policies, as doing so will lower trade barriers. As an
+effect, high levels of trade between two countries create interdependence
+between economies. This interdependence would become more expensive to sustain
+if Internet policies between these two countries were highly discrepant; thus,
+Internet governance policies converge. While real causal relationships are
+likely mixed, both causal pathways give us reason to suspect that trade
+relationships might be correlated with shared Internet blocking policies.
+
+# *** EU vs non-EU
+As a case study, we looked to the European Union. We collected the similarity
+metrics between all pairs of EU countries (within-EU group), and between all
+pairs of EU- and non-EU countries (outside-EU group). We performed a Mann
+Whitney U-Test on the within-EU and outside-EU groups, which found that EU
+countries are more similar with one another (M=0.97) than they are with non-EU
+countries (M=0.89) group (U=99666, p<0.001).
+
+# *** EU: NATO vs Warsaw Pact
+We re-ran this test with EU countries that were and were not members of the
+Soviet bloc before the fall of the Soviet Union. “Western bloc” EU countries
+were more similar to one another (M=0.98) than to non-Western bloc countries,
+whether or not those countries are in the EU (0.93), (U=32701, p<0.001).
+However, we do not find evidence that former “Soviet bloc” countries in the EU
+were more similar to one another (M=0.97) than to non-Soviet bloc countries
+(again, regardless of whether those countries were in the EU) (M=0.93) (U=4327,
+p = 0.41).
+
+*** Takeaways
+
+We find that EU countries are overall more similar to one another than they are
+to the rest of the world. There are a few possible explanations for this
+observation. One explanation is that joining the EU causes "digital behavior" (as
+measured by website blocking) to converge. Another explanation is that countries are more
+likely to join an alliance when they are more culturally, legally and
+politically similar in the first place (see Section [[commonwealth]] for further
+reflections on this point).
+
+Surprisingly, however, former Soviet countries within the EU are not
+significantly more self-similar to one another than they are to the world at
+large. European Union countries that were NATO allies, however, /were/ more
+similar to one another than to the world at large. What do we make of this
+discrepancy?
+
+One explanation is that, while joining an alliance causes countries to converge
+on various policies, institutional structures internal to countries set limits
+on this convergence. _TODO steve, more ideas here? literature on soviet bloc
+etc?_
+
+Future work could use our proxy as a “leading indicator” of changes in trade
+relations, as we can measure Internet blocking continuously. As a country’s
+blocking similarity becomes more similar to a given set of countries, we would
+expect those countries to be more likely to join a trade pact in the future.
+  
+Future work could also explore aspects of global trade outside of formal
+agreements. Non-tariff barriers to trade [Simon J Evenett] present one potential
+avenue. We would expect to find an inverse correlation between non-tariff
+barriers and internet proxy: two countries more open to trade should have
+similar blocking profiles.
+#   maybe talk about trade w digital goods as well (think tiktok...)
+
+** Military alliances
+Increasing concern about “cyberwar” makes it plain that many see the Internet as
+a key tool in military conflict. However, military alliances signal policy
+overlap even if no one fires a bullet. Military alliances signal that one
+country would be willing to fight for another; alliance signals a willingness to
+sacrifice a great deal for another actor, which in turn suggests policy
+alignment.
+
+# *** North Atlantic Treaty Organization (NATO)
+Is shared digital policy around website blocking related to shared military
+objectives? To evaluate this question, we started with the North Atlantic Treaty
+Organization (NATO), an intergovernmental military alliance between 30 North
+American and European countries. Assuming these countries share military
+objectives, we would expect them to have more similar military behaviors. If
+digital layer blocking policy is related to military goals, we would expect NATO
+countries to be overall more similar by our proxy measure to other NATO members
+than to non-NATO members.
+
+We collected the similarity metrics between all pairs of NATO countries
+(within-NATO group), and between all pairs of NATO- and non-NATO countries
+(outside-NATO group). We performed a Mann Whitney U-Test on the two groups, and
+found the within-NATO (M=0.97) group had significantly higher similarity scores
+than the outside-NATO (M=0.90) group (U=93709, p<0.001).
+
+# *** Association of Southeast Asian Nations (ASEAN)
+We performed the same test with ASEAN countries (Indonesia, Thailand, Malaysia,
+Singapore, Philippines, Vietnam, Brunei, Cambodia, Myanmar, Laos). Although
+ASEAN countries have a higher overall similarity with one another (M=0.82) than
+with non-ASEAN countries (M=0.76), our Mann Whitney U-Test falls short of
+significance (U=814, p=0.084).
+
+
+*** Takeaways
+
+NATO countries are significantly more similar to one another in Internet
+blocking patterns than they are to non-NATO countries. It is interesting to note
+that we did *not* find this to be true for former Warsaw pact countries in our
+prior analysis (see Section [[eu]]). Together, these results imply that the "digital
+consequences" of NATO membership may be greater than those of Warsaw pact
+
+Of course, this result does not necessarily indicate that NATO countries have similar
+Internet blocking policies /because/ doing so serves their shared military objectives.
+Within-NATO scores could be higher due to other legal, historical and trade
+relationships between NATO countries. However, our result does provide some
+evidence that Internet policy is not entirely detached from military
+objectives. 
+
+At the same time, and in contrast to NATO countries, ASEAN countries are not
+significantly self-similar. _Steve - you said this ASEAN result makes sense...
+why does this make sense?_
+
+** Personal and Press Freedom
+
+Reporters Without Borders’ [[https://rsf.org/en/ranking][World Press Freedom Index]] quantifies the degree of
+freedom available to journalists in 180 countries. We find a moderate positive
+correlation between blocking similarity and media freedom rank, r(1483) = 0.38,
+p<0.001. Countries more similar to one another in press freedom ranking are also
+more similar to one another in Internet blocking patterns.
+
+Freedom House’s [[https://freedomhouse.org/report/freedom-world][Freedom in the World Index]] quantifies the freedom of electoral
+processes, political participation, functioning of government, freedom of
+expression and association, rule of law, and personal autonomy around the world.
+We find a moderate positive correlation between similarity in World Press
+Freedom ranking and Internet blocking similarity, r(1483) = 0.45, p<0.001. The
+Freedom in the World index and the World Press Freedom indices are themselves
+highly positively correlated with one another, r(156) = 0.85, p<0.001.
+
+The presence of a positive correlation between blocking similarities implies
+that changes to our Internet blocking metric could predict changes to press
+freedom and personal freedom in countries. If a country becomes more similar in
+its Internet blocking patterns to Sweden, its personal and press freedom
+rankings are liable to increase; as it becomes more similar to Russia, we can
+infer that its personal and press freedom rankings are decreasing. This
+prediction is purely correlative; our data do not present a causal claim in one
+direction or the other. That said, our metric promises a faster and
+cheaper-to-collect method than existing proxies used in the indices we mention.
+
+At the same time, the fact that our proxy does not relate /more/ strongly to
+measures of personal and press freedom is itself telling. In other words,
+Internet blocking policy cannot be explained entirely by personal and press
+freedom alone. Future work should examine where specifically correlations
+between Internet blocking and press or personal freedom break down. What about
+Internet blocking cannot be explained by press freedom? Those studies could lead
+to both a more fine-grained metric of personal and press freedom, and
+potentially to a more fine-grained proxy metric of website blocking.
+
+** Cultural Affinity: Commonwealth Countries
+<<commonwealth>>
+
+The correlations we have discussed so far have been suggestive of ties between
+Internet governance policy and other domains, such as press freedom, trade and
+military alliance. However, in all cases, our findings are confounded somewhat
+by shared cultural history. Along with their trade alliance, countries in the EU
+share many legal, cultural and historical similarities. The same is true of NATO
+members and, to a degree, of countries with high press freedom.
+
+To what degree can Internet governance policies be explained by cultural
+relationships---shared legal precedent and cultural norms? To examine this
+question, we analyzed Commonwealth countries, an association of 54 member
+states, nearly all former territories of the British Empire. This association
+represents a shared history of British colonialism, and correlates with various
+cultural factors including use of English language, representative governments
+and common law systems. Of course, these member countries are also quite diverse
+in GDP per capita and human development. However, if Internet blocking relates
+to historical norms around speech, we would expect Commonwealth countries to
+have more similar blocking patterns to one another than to non-Commonwealth
+countries.
+
+We collected the similarity metrics between all pairs of Commonwealth countries
+(within-Commonwealth group), and between all pairs of Commonwealth- and
+non-Commonwealth countries (outside-Commonwealth group). We performed a Mann
+Whitney U-Test on the two groups, and failed to reject that null hypothesis the
+within-Commonwealth (M=0.89) group shared higher similarity scores than the
+outside-Commonwealth (M=0.89) group (U=9922, p=0.59).
+
+*** Takeaways
+
+Our finding implies that Commonwealth heritage is not reflected in website
+blocking. This throws into question the degree to which our previous
+findings---significant similarities between EU countries, NATO countries, or
+countries with high press or personal freedom---are explainable by cultural and
+historical relationships alone.
+
+However, historical relationships are not the only proxy of shared cultural
+connection. Present-day cultural connections may be better measured through, for
+example, plane flights. We might expect countries with high Internet blocking
+similarities to have more airline flights between them. Future work could
+explore these and other relationships to determine how cultural, political and
+legal similarities may explain variance in Internet blocking patterns.
+
+* WAIT Conclusion                                                   :ARCHIVE:
+- what we did, what it could be used for
+- add what-if scenarios
+- leading indicator; find big changes in real-time internet blocking patterns, use them to predict changes in other domains
+  for example, if the US blocks wechat and europe does not, then we could predict that europe will be trading more wtih china than the US will.
+
+# use these points for fundraising in the future
+#  raise funds to maket his into a continuous 'service'; type of intelligence.
+#   pay us to develop this into something continuous
+
+* Appendix
+** Data cleaning
+We had 12 datasets (csv files) ranging from January 2017 to September 2018 which
+amounted to a total of 50,436,865 observations. Each observation represents a
+single GET request to a particular URL in a particular country at a particular
+time. These observations represent both blocked and not-blocked websites; they
+represent queries meant to discover if a website is blocked or not. Results are
+reported regardless of the test outcome. Since this data is from longitudinal
+study, our data set may contain multiple GET requests to the same website across
+different countries at different points of time.
+
+We consider a website blocked when a website has any of ICLab’s blocking-related
+features set to True (dns_all, censored_updated, block, packet_updated). This
+permissive approach allows us to detect all types of blockings available to
+ICLab. We count each such dataset as blocked. Over all observations in the
+datastet, 232,348 are blocked, or 0.46% of the dataset.
+
+Finally, we augment this dataset by adding the Fortiguard category for each
+website observed to be blocked in the dataset. After this process, we are left
+with 78 categories of website blocking across 55 countries.
+
+** Limitations
+*** ICLab data
+While ICLab does a good job at detecting when a website is blocked, there are a
+few limitations that hinder our ability to reliably decide if a given webpage is
+blocked or not.
+
+1. Particular websites may discriminate against VPN users. For example, Netflix
+   blocks all known VPNs. This may make a website appear to be blocked when it
+   really isn't. For now, we correct for this by tossing out all websites that
+   appear to be blocked in the US, as we know the US does not block any websites
+   (at least not in the traditional sense ).
+2. Some VPN providers manipulate traffic themselves (sometimes injecting ads).
+3. Lists of URLs to test are biased. What websites do you test for censorship?
+   ICLab cobbles together numerous datasets from across the web, but some
+   (especially the Citizen Lab lists) suffer from selection bias, as they're
+   manually curated by activists with a particular political bent.
+4. Vantage points can be difficult to set up in countries where censorship is
+   rampant, and in countries with adversarial regimes. These points are
+   typically set up by volunteers. For example, Iran and Syria have no
+   volunteers for now, as the ICLab maintainers decided the political situation
+   is too risky there. ICLab lost access to VPNs in Iran in May 2017 due to
+   sanctions, resulting in missing data in that country. Missing data in that
+   country makes there appear to be little censorship, when in fact censorship
+   may be much higher than we are measuring.
+5. Countries could evade censorship detection. If a country can conceal its
+   censorship actions, how would we know they're doing it? This is a major
+   source of epistemic risk: countries may be using secret or unknown mechanisms
+   to achieve blocking in certain countries, or may be strategically avoiding
+   censoring content to vantage points such as VPNs.
+6. TCP handshakes create some uncertainty as we’re not sure whether the
+   observations constitute actual interference. More data from more vantage
+   points could resolve some of this ambiguity.
+
+# With future funding, we could very easily contribute to ICLab to help overcome a
+# few of these issues—it could be interesting to think about a piece of this to
+# break off and make our own.
+
+A more fundamental issue with ICLab data is that the blocking events in this
+dataset do not necessarily relate to government action. Individual websites,
+such as Netflix, can choose to block traffic originating from particular
+countries. We decided to include these cases of probable non-government
+blocking, as they still show a degree of Internet fragmentation---the degree to
+which the Internet is different across different countries.
+
+*** Content categorization
+
+FortiGuard doesn't capture the fine-grained thematic content of a website.
+FortiGuard [[https://fortiguard.com/webfilter?q=https://www.facebook.com/BlackLivesMatter/&version=8][classifies the Facebook BlackLivesMatter group as "social
+networking"]], indicating that FortiGuard does not capture the subject matter of
+particular Facebook pages. FortiGuard’s 87 categories are based on the user
+needs of their “three major groups of customers: enterprises, schools and
+homes/families.”[fn:1] It is unclear that these categories are a perfect fit for
+our usecase of measuring or detecting policies behind website blocking
+decisions.
+
+However, a pervasive epistemological issue is that we don’t know what the right
+categories should be. The “ground truth” category for Black Lives Matter’s
+Facebook page, for example, is unclear. Is it “race”? “Politics”? These
+boundaries are even less clear for religious movements in Myanmar. Some
+categories straddle the religious and political, while FortiGuard’s given
+categories (e.g., “extremism,” “drug abuse”) embed their own politics. Future
+work could make alternative or complementary categories for webpages based on
+NLP, allowing us to uncover or induce multiple overlapping topics from webpages
+in our corpus rather than relying on the overly-simplistic, one-of-n
+classification of webpages.
+
+Also, we can't be sure that governments (versus private companies) are really
+performing the censorship we're detecting. It could very well be the case that
+renegade ISPs censor things, or that individual sites refuse to serve particular
+countries (perhaps to cut down on fraud or avoid sanctions). While it's
+overwhelming likely that censorship is occurring with state support, the
+difficulty in knowing for sure adds some uncertainty to our use of these data as
+a proxy for policy.
+
+*** False negatives
+
+One epistemic issue in our dataset is possible false negatives. As an example of
+when this issue might crop up, consider China and India. China and india both
+have roughly the same number of observations (2597 vs 2921), but India has a
+much higher number of websites blocked (519 vs 47). There are a few possible
+explanations for this observation. One is that India blocks more frequently than
+China. However, other possible explanations point to issues of false negatives.
+Websites censored in China may not appear on the lists used by ICLab.
+Alternatively, this difference in the number of blocked websites may be an
+artifact of the nature of blocking in China, which could focus more on content
+within apps then with specific URLs.
+
+
+* Footnotes
+
+[fn:1] https://fortiguard.com/webfilter/categories
