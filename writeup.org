@@ -57,12 +57,12 @@ countries with low policy alignment.
 
 ** Webpage blocking as a proxy of policy alignment
 One critical component of Internet governance is webpage blocking. Website
-blocking, typically enacted directly by governments, makes websites unavailable
-in a particular country. In different countries, different sets of websites are
-unavailable, either by redirecting the website request, or simply dropping the
-request or its response. While the technical means for blocking websites are
-diverse (discussed below), the end result is that a user cannot access a
-webpage.
+blocking, typically enacted directly by governments, makes a particular URL
+unavailable in a particular country. In different countries, different sets of
+websites are unavailable, either by redirecting the website request, or simply
+dropping the request or its response. While the technical means for blocking
+websites are diverse (discussed below), the end result is that a user cannot
+access a webpage.
 
 In this project, we use similarities in webpage blocking patterns to achieve a
 similar goal. If two countries block the "same" thing (more on that in a
@@ -575,7 +575,7 @@ it relates, at least somewhat, to existing metrics.
 
 
 ** Data, code and visualization
-Our metric, and the code used to generate it, is [[https://github.com/daylight-lab/website-blocking-proxy][available via GitHub]]. The code that powers our interactive visualizations are also [[https://github.com/lilybhattacharjee5/interoperability-demo][accessible via GitHub]].
+Our metric, and the code used to generate it, are [[https://github.com/daylight-lab/website-blocking-proxy][available via GitHub]]. The code that powers our interactive visualizations are also [[https://github.com/lilybhattacharjee5/interoperability-demo][accessible via GitHub]].
 ** Data cleaning
 We had 12 datasets (.csv files) ranging from January 2017 to September 2018 which
 amounted to a total of 50,436,865 observations. Each observation represents a
