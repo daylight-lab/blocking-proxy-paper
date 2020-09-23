@@ -194,23 +194,21 @@ and Russia---countries which had only two domains in common in Experiment
 #+BEGIN_EXPORT html
 <div id="fig1"></div>
 <script>
-  index.initializeVisualization({
+  index.InteroperabilityVisualization({
     visId: 'fig1',
-    mapHeight: "800px",
-    defaultFill: '#d3d3d3',
-    selectedFill: '#228B22',
-    highlightedFill: 'orange',
-    maxSimilarity: 1,
-    minSimilarity: 0,
-    highlightBorderWidth: 2,
     numIncrements: 5,
+    minSimilarity: 0,
+    maxSimilarity: 1,
     digitsRounded: 2,
     colorScheme: "schemeBlues",
     defaultMode: "force",
     enabledModes: ["force"],
     tableProperties: ["similarity"],
     showTable: false,
-    multiplier: 3,
+    forceProperties: {
+      visHeight: "800px",
+      linkMultiplier: 3,
+    }
   });
 </script>
 #+END_EXPORT
@@ -251,23 +249,21 @@ which /News and Media/ sites comprise 19.8% of blocked content (compared to
 <div id="fig2"></div>
 
 <script>
-  index.initializeVisualization({
+  index.InteroperabilityVisualization({
     visId: 'fig2',
-    mapHeight: "750px",
-    defaultFill: '#d3d3d3',
-    selectedFill: '#228B22',
-    highlightedFill: 'orange',
-    maxSimilarity: 1,
-    minSimilarity: 0,
-    highlightBorderWidth: 2,
     numIncrements: 5,
+    minSimilarity: 0,
+    maxSimilarity: 1,
     digitsRounded: 2,
     colorScheme: "schemeBlues",
     defaultMode: "force",
     enabledModes: ["force"],
-    tableProperties: ["similarity"],
-    selectedCountry: "China",
-    showTable: false
+    showTable: false,
+    forceProperties: {
+      visHeight: "750px",
+      selectedCountry: "CHN",
+      linkMultiplier: 3,
+    }
   });
 </script>
 #+END_EXPORT
@@ -548,24 +544,24 @@ it relates, at least somewhat, to existing metrics.
 #+BEGIN_EXPORT html
 <div id="fig3"></div>
 <script>
-  index.initializeVisualization({
+  index.InteroperabilityVisualization({
     visId: 'fig3',
-    mapHeight: "800px",
-    defaultFill: '#d3d3d3',
-    selectedFill: '#228B22',
-    highlightedFill: 'orange',
-    maxSimilarity: 1,
-    minSimilarity: 0,
-    highlightBorderWidth: 2,
     numIncrements: 5,
+    minSimilarity: 0,
+    maxSimilarity: 1,
     digitsRounded: 2,
     colorScheme: "schemeBlues",
     defaultMode: "geomap",
     enabledModes: ["geomap"],
-    tableProperties: ["similarity"],
-    selectedCountry: "Canada",
     showTable: false,
-    multiplier: 3,
+    geomapProperties: {
+      visHeight: "800px",
+      defaultFill: '#d3d3d3',
+      selectedFill: '#228B22',
+      highlightedFill: 'orange',
+      highlightBorderWidth: 2,
+      selectedCountry: "CAN",
+    },
   });
 </script>
 #+END_EXPORT
