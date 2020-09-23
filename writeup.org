@@ -167,16 +167,16 @@ block different numbers of sites.
 
 As an example, see a Figure [[fig:4country]], in which we see the relative blocking
 activity of four countries that are all very differently situated in the
-international order.
+international order. This selection of countries indicates that there is
+meaningful variation between countries in our dataset. Motivated by this
+variation, we devised a similarity metric by which we can compare any two
+countries.
  
  
-#+CAPTION: Categories of websites that are blocked across Turkey, Russia, India and South Korea. We observe that these different countries block websites of various categories in different proportions. There appears to be meaningful variation in the data across countries.
+#+CAPTION: Proportion of websites blocked in Turkey, Russia, India and South Korea across a subset of Fortiguard categories. (Our dataset contained 78 categories for each country; we display only a few here for demonstration). We observe that these different countries block websites of various categories in different proportions. There appears to be meaningful variation in the data across countries.
 #+NAME: fig:4country
 [[./img/4country.png]]
 
-This graph strongly indicates that there is meaningful variation in our data
-between countries. Motivated by this variation, we devised a similarity metric
-by which we can compare any two countries.
 
 To compute this similarity metric, we interpret the percentage of websites
 blocked in each category as a set of coordinates in n-dimensional space (e.g.,
