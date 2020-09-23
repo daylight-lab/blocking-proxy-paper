@@ -287,11 +287,11 @@ the global Internet on one hand, and enforcing national sovreignty on the other.
 The value of our findings is, as suggested earlier, dual. First, this work
 provides a new and more dynamic metric of alignment that supplements existing
 metrics. In this section, we examined our metric in this context. Second, our
-metric may _summarize first graf of next section_. The following section turns
-to this possibility, comparing our metric to existing facets of the
-international order and asking to what degree our measurement is distinctive,
-and to what degree it overlaps with traditional domains of measurement in
-international relations.
+metric may complement other measures of international relations (e.g., of trade
+or of civil rights policy). The following section turns to this possibility,
+comparing our metric to existing facets of the international order and asking to
+what degree our measurement is distinctive, and to what degree it overlaps with
+traditional domains of measurement in international relations.
 
 * Comparisons to other domains
 
@@ -338,11 +338,11 @@ p = 0.41).
 
 We find that EU countries are overall more similar to one another than they are
 to the rest of the world. There are a few possible explanations for this
-observation. One explanation is that joining the EU causes "digital behavior" (as
-measured by website blocking) to converge. Another explanation is that countries are more
-likely to join an alliance when they are more culturally, legally and
-politically similar in the first place (see Section [[commonwealth]] for further
-reflections on this point).
+observation. One explanation is that joining the EU causes "digital behavior"
+(as measured by website blocking) to converge. Another explanation is that
+countries are more likely to join an alliance when they are more culturally,
+legally and politically similar in the first place (see our analysis of cultural
+and historical ties, below, for further reflections on this point).
 
 Surprisingly, however, former Soviet countries within the EU are not
 significantly more self-similar to one another than they are to the world at
@@ -400,8 +400,9 @@ significance (U=814, p=0.084).
 NATO countries are significantly more similar to one another in Internet
 blocking patterns than they are to non-NATO countries. It is interesting to note
 that we did /not/ find this to be true for former Warsaw pact countries in our
-prior analysis (see Section [[eu]]). Together, these results imply that the "digital
-consequences" of NATO membership may be greater than those of Warsaw pact
+prior analysis (see our section on trade alliances, above). Together, these
+results imply that the "digital consequences" of NATO membership may be greater
+than those of Warsaw pact
 
 Of course, this result does not necessarily indicate that NATO countries have similar
 Internet blocking policies /because/ doing so serves their shared military objectives.
