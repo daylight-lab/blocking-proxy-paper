@@ -608,23 +608,23 @@ blocked or not.
    appear to be blocked in the US, as we know the US does not block any websites
    (at least not in the traditional sense ).
 2. Some VPN providers manipulate traffic themselves (sometimes injecting ads).
-3. Lists of URLs to test are biased. What websites do you test for censorship?
+3. Lists of URLs to test are biased. What websites do you test for blocking?
    ICLab cobbles together numerous datasets from across the web, but some
    (especially the Citizen Lab lists) suffer from selection bias, as they're
    manually curated by activists with a particular political bent.
-4. Vantage points can be difficult to set up in countries where censorship is
+4. Vantage points can be difficult to set up in countries where blocking is
    rampant, and in countries with adversarial regimes. These points are
    typically set up by volunteers. For example, Iran and Syria have no
    volunteers for now, as the ICLab maintainers decided the political situation
    is too risky there. ICLab lost access to VPNs in Iran in May 2017 due to
    sanctions, resulting in missing data in that country. Missing data in that
-   country makes there appear to be little censorship, when in fact censorship
+   country makes there appear to be little blocking, when in fact website blocking
    may be much higher than we are measuring.
-5. Countries could evade censorship detection. If a country can conceal its
-   censorship actions, how would we know they're doing it? This is a major
+5. Countries could evade blocking detection. If a country can conceal its
+   website blocking actions, how would we know they're doing it? This is a major
    source of epistemic risk: countries may be using secret or unknown mechanisms
    to achieve blocking in certain countries, or may be strategically avoiding
-   censoring content to vantage points such as VPNs.
+   blocking content to vantage points such as VPNs.
 6. TCP handshakes create some uncertainty as we’re not sure whether the
    observations constitute actual interference. More data from more vantage
    points could resolve some of this ambiguity.
@@ -663,10 +663,10 @@ in our corpus rather than relying on the overly-simplistic, one-of-n
 classification of webpages.
 
 Also, we can't be sure that governments (versus private companies) are really
-performing the censorship we're detecting. It could very well be the case that
-renegade ISPs censor things, or that individual sites refuse to serve particular
-countries (perhaps to cut down on fraud or avoid sanctions). While it's
-overwhelming likely that censorship is occurring with state support, the
+performing the website blocking we're detecting. It could very well be the case
+that renegade ISPs blocks content, or that individual sites refuse to serve
+particular countries (perhaps to cut down on fraud or avoid sanctions). While
+it's overwhelming likely that blocking is occurring with state support, the
 difficulty in knowing for sure adds some uncertainty to our use of these data as
 a proxy for policy.
 
@@ -678,7 +678,7 @@ have roughly the same number of observations (2597 vs 2921), but India has a
 much higher number of websites blocked (519 vs 47). There are a few possible
 explanations for this observation. One is that India blocks more frequently than
 China. However, other possible explanations point to issues of false negatives.
-Websites censored in China may not appear on the lists used by ICLab.
+Websites blocked in China may not appear on the lists used by ICLab.
 Alternatively, this difference in the number of blocked websites may be an
 artifact of the nature of blocking in China, which could focus more on content
 within apps then with specific URLs.
