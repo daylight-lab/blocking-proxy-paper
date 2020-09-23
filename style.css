@@ -1,0 +1,96 @@
+/**
+ * common.css
+ *
+ * Copyright (c) 2003-2006 John Willinsky
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * Site-wide shared stylesheet.
+ *
+ * $Id: common.css,v 1.39 2006/07/01 17:36:16 alec Exp $
+ */
+
+/**
+ * Common HTML elements
+ */
+
+html {
+  line-height: 1.15; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
+
+body {
+	background-color: #ffffff;
+}
+
+#content {
+  max-width: 1000px;
+  margin: auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+a:link {
+	color: #cc0000;
+}
+
+a:active {
+	color: #ffee99;
+}
+
+a:visited {
+	color: #7777bb;
+}
+
+a:hover {
+	color: #cc0000;
+	background: #ffffff;
+}
+
+a.plain {
+	text-decoration: none;
+}
+
+.header {
+	padding: 0;
+	margin: 0 auto;
+	background-color: #ffffff;
+	text-align: center;
+}
+
+
+/* #headerTitle { */
+/* 	text-align: left important!; */
+/* 	/\* margin: 0 auto; *\/ */
+/* 	/\* padding: 0; *\/ */
+/* 	width: 800px; */
+/* } */
+
+h1 {
+	margin: 0 auto;
+	padding: 0.5em 0 0.5em 0;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-weight: normal;
+}
+
+h3 {
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	line-height: 1.35em;
+}
+
+h4 {
+	margin: 0em 1em 0.25em 0em;
+	padding-top: 0.75em;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-weight: normal;
+	font-size: 1.5em;
+}
+
+h5 {
+	margin: 0em 1em 0.25em 0em;
+	padding-top: 0.75em;
+	font-weight: bold;
+	font-size: 1em;
+}
