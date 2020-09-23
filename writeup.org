@@ -6,36 +6,31 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css"/>
 #+HTML_HEAD: <script type="text/javascript" src="js/index.bundle.js"></script>
 
+* Abstract
+
+This work introduces a new proxy of policy alignment between states: website
+blocking. This proxy speaks to the information flow in the digital layer of
+international politics, a new element to international trade and cooperation,
+and one which existing proxy metrics fail to capture. In addition, our proxy
+measure can be constantly scraped and updated, offering a higher temporal
+resolution than existing proxies. Our work suggests a link between Internet
+governance and other issues in international relations. Since we can capture our
+metric in real time, we can use changes in our proxy to detect possible changes
+in international relations faster than would otherwise be possible.
+
 * Introduction
 
 In international politics and political economy, the primitive unit of analysis
 is frequenty the /state/. One of the important observations is how and when
 states “align” with each other. Do they support each other when it comes to
 conflict with a third party? Do they trade more than one would expect? Since
-formal trade agreements (e.g., EEA) and formal alliances (e.g., NATO) only
-capture certain aspects of states’ alignment, researchers have looked for other
-measures of policy alignment to fill in the gaps.
-
-This work introduces a new proxy of policy alignment: website blocking. This
-proxy is particularly interesting because it speaks to the information flow in
-the digital layer of international politics, a new element to international
-trade and cooperation, one which existing proxy metrics fail to capture a
-priori. In addition, our proxy measure can be constantly scraped and updated,
-offering a higher temporal resolution than existing proxies.
-
-Big ideas:
-- Our work suggests a link between Internet governance and other issues in international relations
-- Since we can capture our metric in real time, we can use changes in our proxy
-  to detect possible changes in the IR landscape faster than would otherwise be
-  possible
-# - we are suggesting our proxy for application to your domain of interest
-
-* Background
-** Policy alignment
+formal trade agreements (e.g., European Union) and formal alliances (e.g., NATO)
+only capture certain aspects of states’ alignment, researchers have looked for
+other measures of policy alignment to fill in the gaps.
 
 #+CAPTION: Different proxies of policy alignment create connected graphs of countries. We can compare these proxies across topic areas. Our project adds a new topic area: the Internet.
 #+LABEL: fig:proxies
-[[./img/proxies.png]]
+[[./img/proxy-model.jpeg]]
 
 Given two countries, policy alignment refers to the degree to which policies in
 those two countries are similar along some set of dimensions. Since a country's
@@ -82,15 +77,14 @@ quickly than other metrics can afford.
 
 * Methods
 
-From a technical
-standpoint, there are a variety of ways to block webpages. One option is to
-manipulate domain name system (DNS) messages in order to make websites appear
-unresolveable. Another option is to drop TCP handshake packages with particular
-destination IPs, effectively making IP addresses impossible to contact. A
-related option is to allow the TCP handshake to occur, but inject follow-up TCP
-packets that either break or supersede the legitimate response. Yet another
-option is to make a legal case to a particular service provider (for example,
-asking Facebook to block a page in a particular country).
+From a technical standpoint, there are a variety of ways to block webpages. One
+option is to manipulate domain name system (DNS) messages in order to make
+websites appear unresolveable. Another option is to drop TCP handshake packages
+with particular destination IPs, effectively making IP addresses impossible to
+contact. A related option is to allow the TCP handshake to occur, but inject
+follow-up TCP packets that either break or supersede the legitimate response.
+Yet another option is to make a legal case to a particular service provider (for
+example, asking Facebook to block a page in a particular country).
 
 [[http://iclab.org/][ICLab]], a longitudinal corpus of website blocking events, seeks to deal with this
 diversity in blocking strategies. It focuses on consistency in blocking
@@ -200,22 +194,24 @@ and Russia---countries which had only two domains in common in Experiment
 #+BEGIN_EXPORT html
 <div id="fig1"></div>
 <script>
-  index.initializeVisualization(
-    visId = 'fig1',
-    mapHeight = 750,
-    defaultFill = '#d3d3d3',
-    selectedFill = '#228B22',
-    highlightedFill = 'orange',
-    maxSimilarity = 1,
-    minSimilarity = 0,
-    highlightBorderWidth = 2,
-    numIncrements = 5,
-    digitsRounded = 2,
-    colorScheme = "schemeBlues",
-    defaultMode = "force",
-    enabledModes = ["force"],
-    tableProperties = ["similarity"],
-  );
+  index.initializeVisualization({
+    visId: 'fig1',
+    mapHeight: "800px",
+    defaultFill: '#d3d3d3',
+    selectedFill: '#228B22',
+    highlightedFill: 'orange',
+    maxSimilarity: 1,
+    minSimilarity: 0,
+    highlightBorderWidth: 2,
+    numIncrements: 5,
+    digitsRounded: 2,
+    colorScheme: "schemeBlues",
+    defaultMode: "force",
+    enabledModes: ["force"],
+    tableProperties: ["similarity"],
+    showTable: false,
+    multiplier: 3,
+  });
 </script>
 #+END_EXPORT
 #+CAPTION: Force-directed graph of similarities in our dataset. 
@@ -255,22 +251,24 @@ which /News and Media/ sites comprise 19.8% of blocked content (compared to
 <div id="fig2"></div>
 
 <script>
-  index.initializeVisualization(
-    visId = 'fig2',
-    mapHeight = 750,
-    defaultFill = '#d3d3d3',
-    selectedFill = '#228B22',
-    highlightedFill = 'orange',
-    maxSimilarity = 1,
-    minSimilarity = 0,
-    highlightBorderWidth = 2,
-    numIncrements = 5,
-    digitsRounded = 2,
-    colorScheme = "schemeBlues",
-    defaultMode = "force",
-    enabledModes = ["force"],
-    tableProperties = ["similarity"],
-  );
+  index.initializeVisualization({
+    visId: 'fig2',
+    mapHeight: "750px",
+    defaultFill: '#d3d3d3',
+    selectedFill: '#228B22',
+    highlightedFill: 'orange',
+    maxSimilarity: 1,
+    minSimilarity: 0,
+    highlightBorderWidth: 2,
+    numIncrements: 5,
+    digitsRounded: 2,
+    colorScheme: "schemeBlues",
+    defaultMode: "force",
+    enabledModes: ["force"],
+    tableProperties: ["similarity"],
+    selectedCountry: "China",
+    showTable: false
+  });
 </script>
 #+END_EXPORT
 #+CAPTION: China's blocking patterns are relatively unique, sharing noteable similarities only with Hong Kong and, to a lesser degree, with Lichtenstein.
@@ -357,13 +355,9 @@ on various policies, institutional structures internal to countries set limits
 on this convergence. _TODO steve, more ideas here? literature on soviet bloc
 etc?_
 
-Future work could use our proxy as a “leading indicator” of changes in trade
-relations, as we can measure Internet blocking continuously. As a country’s
-blocking similarity becomes more similar to a given set of countries, we would
-expect those countries to be more likely to join a trade pact in the future.
   
 Future work could also explore aspects of global trade outside of formal
-agreements. Non-tariff barriers to trade [Simon J Evenett] present one potential
+agreements. Non-tariff barriers to trade _[Simon J Evenett]_ present one potential
 avenue. We would expect to find an inverse correlation between non-tariff
 barriers and internet proxy: two countries more open to trade should have
 similar blocking profiles.
@@ -405,7 +399,7 @@ significance (U=814, p=0.084).
 
 NATO countries are significantly more similar to one another in Internet
 blocking patterns than they are to non-NATO countries. It is interesting to note
-that we did *not* find this to be true for former Warsaw pact countries in our
+that we did /not/ find this to be true for former Warsaw pact countries in our
 prior analysis (see Section [[eu]]). Together, these results imply that the "digital
 consequences" of NATO membership may be greater than those of Warsaw pact
 
@@ -499,29 +493,100 @@ similarities to have more airline flights between them. Future work could
 explore these and other relationships to determine how cultural, political and
 legal similarities may explain variance in Internet blocking patterns.
 
-* WAIT Conclusion
-- what we did, what it could be used for
-- add what-if scenarios
-- leading indicator; find big changes in real-time internet blocking patterns, use them to predict changes in other domains
-  for example, if the US blocks wechat and europe does not, then we could predict that europe will be trading more wtih china than the US will.
+* Conclusion
 
-# use these points for fundraising in the future
-#  raise funds to maket his into a continuous 'service'; type of intelligence.
-#   pay us to develop this into something continuous
+This work presents Internet blocking as a proxy of policy alignment. It
+represents policy in a domain not well-studied by other proxies of alignment:
+the realm of Internet governance.
+
+The fact that our metric captures significant variation globally---and that this
+variation correlates to other realms of international relations, such as trade
+and military alliance---demonstrates the relevance of Internet fragmentation to
+policymakers. Internet fragmentation is not simply a technical issue, nor is it
+only an issue for trade or for cybersecurity. Internet fragmentation, at least
+as measured by content blocking, appears to be entangled with many aspects of
+the global order.
+
+As such, future work could use our proxy as a “leading indicator” of changes to
+international relations. Unlike other proxies of global trade, military
+alliance, or civil rights, we can measure Internet blocking continuously. As one
+country converges with others on content blocking patterns, we would expect
+those countries to be more likely to, for example, join a trade pact in the
+future. To name an example timely as of the time of this writing, imagine that
+the United States blocks the Chinese apps WeChat and TikTok, and the European
+Union does not follow suit. With that change, we could predict that the EU would
+be more likely to trade with China than would the US.
+
+Similarly, our tool could be used to generate "what-if" scenarios. If
+policymakers are toying with blocking a particular webiste (again, imagine the
+US thinking about blocking TikTok), our metric could indicate how this blocking
+event would change the structure of similarity relations globally.
+
+In the future, we aim to develop our tool to be more comprehensive, covering
+multiple layers of the TCP/IP stack. This metric, which covers content blocking
+alone, focuses on the ``application'' layer of DNS and HTTP. Our future work
+could explore fragmentation ``lower down'' the stack (e.g., at the protcol
+layer, where a transition from IPv4 to IPv6 plays out unevenly around the
+globe). Future work could also explore fragmentation ``higher up'' the stack,
+looking at laws that limit data flow or enforce Internet sovreignty
+cite:Bejtlich2015.
+
+We also aim to collect data more frequently, updating our metric as continuously
+as possible (and archiving prior metrics). If we collect website blocking data
+day-to-day, we could detect sudden changes in blocking patterns. These changes
+could themselves act as harbingers of changes to the international order.
+
+Overall, we present our metric as a tool for future research. Our correlations
+are, by nature of our contribution, somewhat cursory: our primary goal in this
+paper is to develop our metric, to describe what it reveals, and to verify that
+it relates, at least somewhat, to existing metrics.
+
 
 * Appendix
+
+#+BEGIN_EXPORT html
+<div id="fig3"></div>
+<script>
+  index.initializeVisualization({
+    visId: 'fig3',
+    mapHeight: "800px",
+    defaultFill: '#d3d3d3',
+    selectedFill: '#228B22',
+    highlightedFill: 'orange',
+    maxSimilarity: 1,
+    minSimilarity: 0,
+    highlightBorderWidth: 2,
+    numIncrements: 5,
+    digitsRounded: 2,
+    colorScheme: "schemeBlues",
+    defaultMode: "geomap",
+    enabledModes: ["geomap"],
+    tableProperties: ["similarity"],
+    selectedCountry: "Canada",
+    showTable: false,
+    multiplier: 3,
+  });
+</script>
+#+END_EXPORT
+#+CAPTION: A map of similarities between countries' website blocking patterns. Click on countries to view their similarities with other countries.
+#+LABEL: fig:force-directed
+[[./img/dummy.png]]
+
+
+** Data, code and visualization
+Our metric, and the code used to generate it, is [[https://github.com/daylight-lab/website-blocking-proxy][available via GitHub]]. The code that powers our interactive visualizations are also [[https://github.com/lilybhattacharjee5/interoperability-demo][accessible via GitHub]].
 ** Data cleaning
-We had 12 datasets (csv files) ranging from January 2017 to September 2018 which
+We had 12 datasets (.csv files) ranging from January 2017 to September 2018 which
 amounted to a total of 50,436,865 observations. Each observation represents a
 single GET request to a particular URL in a particular country at a particular
 time. These observations represent both blocked and not-blocked websites; they
 represent queries meant to discover if a website is blocked or not. Results are
 reported regardless of the test outcome. Since this data is from longitudinal
-study, our data set may contain multiple GET requests to the same website across
+study, our data set may contain multiple =GET requests to the same website across
 different countries at different points of time.
 
 We consider a website blocked when a website has any of ICLab’s blocking-related
-features set to True (dns_all, censored_updated, block, packet_updated). This
+features set to True (=dns_all=, =censored_updated=, =block=, =packet_updated=). This
 permissive approach allows us to detect all types of blockings available to
 ICLab. We count each such dataset as blocked. Over all observations in the
 datastet, 232,348 are blocked, or 0.46% of the dataset.
