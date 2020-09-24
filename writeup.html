@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-23 Wed 09:43 -->
+<!-- 2020-09-24 Thu 12:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Website Blocking as a Proxy of Policy Alignment</title>
@@ -246,9 +246,9 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">Website Blocking as a Proxy of Policy Alignment</h1>
 
-<div id="outline-container-orge144748" class="outline-2">
-<h2 id="orge144748">Abstract</h2>
-<div class="outline-text-2" id="text-orge144748">
+<div id="outline-container-org30f4fb4" class="outline-2">
+<h2 id="org30f4fb4">Abstract</h2>
+<div class="outline-text-2" id="text-org30f4fb4">
 <p>
 This work introduces a new proxy of policy alignment between states: website
 blocking. This proxy speaks to the information flow in the digital layer of
@@ -263,21 +263,22 @@ in international relations faster than would otherwise be possible.
 </div>
 </div>
 
-<div id="outline-container-orgc815b6e" class="outline-2">
-<h2 id="orgc815b6e">Introduction</h2>
-<div class="outline-text-2" id="text-orgc815b6e">
+<div id="outline-container-orgafe0ddd" class="outline-2">
+<h2 id="orgafe0ddd">Introduction</h2>
+<div class="outline-text-2" id="text-orgafe0ddd">
 <p>
 In international politics and political economy, the primitive unit of analysis
 is frequenty the <i>state</i>. One of the important observations is how and when
 states “align” with each other. Do they support each other when it comes to
-conflict with a third party? Do they trade more than one would expect? Since
-formal trade agreements (e.g., European Union) and formal alliances (e.g., NATO)
-only capture certain aspects of states’ alignment, researchers have looked for
-other measures of policy alignment to fill in the gaps.
+conflict with a third party? Do they trade more than one would expect (e.g.,
+from gravity models)? Since formal trade agreements (e.g., European Union) and
+formal alliances (e.g., NATO) only capture certain aspects of states’ alignment,
+researchers have looked for other measures of policy alignment to fill in the
+gaps.
 </p>
 
 
-<div id="org41cd782" class="figure">
+<div id="orgcc855d2" class="figure">
 <p><img src="./img/proxy-model.jpeg" alt="proxy-model.jpeg" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Different proxies of policy alignment create connected graphs of countries. We can compare these proxies across topic areas. Our project adds a new topic area: the Internet.</p>
@@ -286,8 +287,8 @@ other measures of policy alignment to fill in the gaps.
 <p>
 Given two countries, policy alignment refers to the degree to which policies in
 those two countries are similar along some set of dimensions. Since a country's
-policy stance on any given set of issues is complex and situated to the point of
-being unobservable in a measurable way, proxies of policy stances are used.
+policy stance on any given set of issues is complex to the point of being
+unobservable in a measurable way, <i>proxies</i> of policy stances are used.
 </p>
 
 <p>
@@ -296,26 +297,36 @@ same way in the UN, that's a proxy of policy alignment. UN votes don't carry a
 lot of weight in practice, but if we assume that countries cast votes on the
 basis of their overall policy positions (i.e., rather than strategically, or
 symbolically) then countries that vote similarly are more likely to have similar
-policies than countries that vote differently. The core concept here is that
-countries do not need to be actively collaborating (e.g., in formal agreements)
-to show policy alignment (though they might be). They may be voting the same way
-because of some underlying, driving causal factor (e.g., a shared ideology, or
-shared geopolitical goals).
+policies than countries that vote differently. Countries do not need to be
+actively collaborating (e.g., in formal agreements) to show policy alignment
+(although they might be). They may be voting the same way because of some
+underlying, driving causal factor (e.g., a shared ideology, or shared
+geopolitical goals).
 </p>
 
 <p>
-In practice, the notion of "alignment" is used as a predictive variable for
-other phenomena of interest, including but not limited to formal treaties and
-alliances. Two countries that have high policy alignment are more likely to
-support each other in a conflict with a third party, for example, than two
-countries with low policy alignment.
+This notion of "alignment" is used as a predictive variable for other phenomena
+of interest, including but not limited to formal treaties and alliances. Two
+countries that have high policy alignment are more likely to support each other
+in a conflict with a third party, for example, than two countries with low
+policy alignment.
 </p>
 </div>
 
 
-<div id="outline-container-org65c74b2" class="outline-3">
-<h3 id="org65c74b2">Webpage blocking as a proxy of policy alignment</h3>
-<div class="outline-text-3" id="text-org65c74b2">
+<div id="outline-container-org130f4d2" class="outline-3">
+<h3 id="org130f4d2">Webpage blocking as a proxy of policy alignment</h3>
+<div class="outline-text-3" id="text-org130f4d2">
+<p>
+Currently, no proxy of policy alignment currenty measures Internet governance.
+Internet governance refers to the policies that shape the Internet in any given
+country. The Internet is a relatively new domain of International policy
+competition, as well as a new domain in which trade, cooperation and conflict
+all take place. In addition, we can collect data on our metric continuously,
+allowing us to detect changes in policy alignment much more quickly than other
+metrics can afford.
+</p>
+
 <p>
 One critical component of Internet governance is webpage blocking. Website
 blocking, typically enacted directly by governments, makes a particular URL
@@ -328,25 +339,22 @@ access a webpage.
 
 <p>
 In this project, we use similarities in webpage blocking patterns to achieve a
-similar goal. If two countries block the "same" thing (more on that in a
-minute), we consider this alignment a proxy of policy alignment. They may not
-have conferred, but their blocking decision reveals a shared outlook or set of
-geopolitical goals. Compared to existing proxies, ours captures a new domain:
-Internet governance. The Internet is a relatively new domain of International
-policy competition, as well as a new domain in which trade, cooperation and
-conflict all take place. In addition, we can collect data on our metric
-continuously, allowing us to detect changes in policy alignment much more
-quickly than other metrics can afford.
+proxy of policy alignment on Internet governance. If two countries block the
+similar content (more on what "similar" means later), we consider this alignment
+a proxy of policy alignment on Internet governance issues. They may not have
+conferred, but their blocking decision reveals a shared outlook or set of
+geopolitical goals.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7487d02" class="outline-2">
-<h2 id="org7487d02">Methods</h2>
-<div class="outline-text-2" id="text-org7487d02">
+
+<div id="outline-container-org0743c05" class="outline-2">
+<h2 id="org0743c05">Methods</h2>
+<div class="outline-text-2" id="text-org0743c05">
 <p>
-From a technical standpoint, there are a variety of ways to block webpages. One
+From a technical standpoint, there are a variety of methods for blocking webpages. One
 option is to manipulate domain name system (DNS) messages in order to make
 websites appear unresolveable. Another option is to drop TCP handshake packages
 with particular destination IPs, effectively making IP addresses impossible to
@@ -368,57 +376,47 @@ pre-processed the data. See Appendix for details.).
 </p>
 </div>
 
-<div id="outline-container-org0908086" class="outline-3">
-<h3 id="org0908086">Attempt 1: Strict overlap</h3>
-<div class="outline-text-3" id="text-org0908086">
+<div id="outline-container-orge048e0f" class="outline-3">
+<h3 id="orge048e0f">Attempt 1: Strict overlap</h3>
+<div class="outline-text-3" id="text-orge048e0f">
 <p>
 The simplest proxy of policy overlap would be to measure exact overlaps in
-blocked websites between countries. When two countries block the same thing,
-that's a signal of policy alignment in our model. To compute our metric, we
-first find the web pages that appear to be blocked in each country, grouping by
-the ICLab data’s country column. Because no webpages are known to be blocked in
-the US, we consider any sites in the US grouping to be false positives (perhaps
-due to websites blocking known VPN endpoints; see Limitations) and filter the
-corresponding domain-suffixes out of every country’s blocked list in the cleaned
-dataset.
-</p>
-
-<p>
-This is straightforward in principle, but in practice, yields minimal variation
-in the data. During development, we found that there's not much overlap in exact
-URLs between countries, generally speaking. Even countries with relatively high
+blocked websites between countries. When two countries block the same url (e.g.,
+<code>example.abc/site/</code>), we take that as a signal of policy alignment in our model.
+To compute our metric, we first found the web pages that appear to be blocked in
+each country, grouping by the ICLab data’s country column. This is
+straightforward in principle, but in practice, yields minimal variation in the
+data. During development, we found that there's not much overlap in exact URLs
+between countries, generally speaking. Even countries with relatively high
 blocking in our dataset have minimal overlap. For most pairs of countries in our
 dataset, this method yields no overlaps at all.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org776d567" class="outline-3">
-<h3 id="org776d567">Attempt 2: Fuzzy overlap</h3>
-<div class="outline-text-3" id="text-org776d567">
+<div id="outline-container-org434c8e0" class="outline-3">
+<h3 id="org434c8e0">Attempt 2: Fuzzy overlap</h3>
+<div class="outline-text-3" id="text-org434c8e0">
 <p>
 To get around the lack of strict overlaps in website blocking, we next attempted
-to measure fuzzy overlaps in blocking between countries. Consider the webpage
-facebook.com/some-page and the webpage facebook.com/different-page. If Country Y
-blocks the first and Country Z blocks the second, is that overlap? By the strict
-method, no, this would not count as overlap. By this fuzzy method, it would:
-they're both interfering with the same root domain, which we will refer to as a
-“domain” (rather than ”webpage”). To achieve this, we performed the same steps
-as in Experiment 1, but used Python’s tldextract library to separate domains and
-suffixes from site urls. We removed any duplicate domain-suffix pairs.
-</p>
-
-<p>
-However, we still observe very little overlap with this approach. For example,
-Turkey and Russia have 121 and 340 blocking events in our dataset, respectively,
-but only 23 websites in common.
+to measure "fuzzy" overlaps in blocking between countries by considering only
+root domains. Consider the webpage <code>facebook.com/some-page</code> and the webpage
+<code>facebook.com/different-page</code>. If Country A blocks the first and Country B
+blocks the second, is that overlap? By our prior method, this would not count as
+overlap. However, by this method, it would: they're both blocking the same root
+domain (<code>facebook.com</code>). To achieve this, we performed the same steps as in
+Experiment 1, but used Python’s <a href="https://pypi.org/project/tldextract/">tldextract</a> library to separate domains and
+suffixes from site urls. We removed any duplicate domain-suffix pairs. However,
+we still observe very little overlap with this approach. For example, Turkey and
+Russia have 121 and 340 blocking events in our dataset, respectively, but only
+23 websites in common.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgfc65d01" class="outline-3">
-<h3 id="orgfc65d01">Attempt 3: Overlap in content of blocked webpages</h3>
-<div class="outline-text-3" id="text-orgfc65d01">
+<div id="outline-container-org0b69640" class="outline-3">
+<h3 id="org0b69640">Attempt 3: Overlap in content of blocked webpages</h3>
+<div class="outline-text-3" id="text-org0b69640">
 <p>
 Not only do the Experiment 1 and Experiment 2 methods produce minimal variation
 in the data, they also lose some important sources of variation: the themes of
@@ -429,7 +427,7 @@ measure. Two states may block different websites that are, in practical terms,
 </p>
 
 <p>
-Here's an illustrative example. India blocks Facebook pages that advocate for
+Here's an illustrative example: India blocks Facebook pages that advocate for
 Muslim rights, especially regarding issues around Rohingya Muslims in Myanmar
 (see an <a href="https://wvww.facebook.com/plzsaveallmuslimlnburma">example here</a>). While no other countries block Facebook pages to such a
 degree, other countries do block websites at the intersection of religion and
@@ -438,23 +436,24 @@ political movements (Turkey, Saudia Arabia, Russia and more).
 
 <p>
 Thus, we set out to measure thematic overlaps in blocked content between
-countries. Consider domain1.xyz and domain.abc. If they're both categorized as
-"religious," and two countries block them, we would consider this an overlap.
+countries. Consider <code>domain1.com</code> and <code>domain2.com</code>. If they're both categorized
+as "religious," and two countries block them, we would consider this an overlap.
 While these categorizations necessarily lack granularity, it is common for
-widely-used metrics such as “press freedom” [] or “religious freedom” [] to
-categorize content at an analogous level (see Limitations for a further
-discussion on classification).
+widely-used metrics such as “press freedom” <span class="underline">[cite]</span> or “religious freedom”
+<span class="underline">[cite]</span> to categorize content at an analogous level (see Limitations for a
+further discussion on classification). In their own analysis of their toolkit,
+ICLab settled on a similar technique, and used FortiGuard's URL categories to
+classify websites' content <span class="underline">[cite]</span>.
 </p>
 
 <p>
-ICLab settled on a similar technique, and used FortiGuard's URL categories.
 FortiGuard provides a “web filter” for corporations, allowing networks to block
 (for example) pornography or gambling sites. To make this service work,
 FortiGuard maintains a URL classification service, which returns a category for
 any given URL. FortiGuard <a href="https://fortiguard.com/webfilter/categories">maintains 87 different classifications</a>. Their ontology
 is tailored toward the instrumental purpose of maintaining corporate web
 policies; we return to the implications of this ontology, as well as alternative
-ontologies, in our discussion and limitations sections.
+ontologies, in our discussion and limitations sections. 
 </p>
 
 <p>
@@ -463,11 +462,11 @@ with a set of classifications, which we can represent proportionally: we can
 represent the percentage each category contributes to the total set of a
 country’s blocked sites. One advantage of this method is that it is invariant to
 the number of blocked sites total, allowing comparisons between countries that
-block different numbers of sites.
+block different numbers of sites. 
 </p>
 
 <p>
-As an example, see a Figure <a href="#org1908635">2</a>, in which we see the relative blocking
+As an example, see a Figure <a href="#org9421c6b">2</a>, in which we see the relative blocking
 activity of four countries that are all very differently situated in the
 international order. This selection of countries indicates that there is
 meaningful variation between countries in our dataset. Motivated by this
@@ -477,7 +476,7 @@ countries.
 
 
 
-<div id="org1908635" class="figure">
+<div id="org9421c6b" class="figure">
 <p><img src="./img/4country.png" alt="4country.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Proportion of websites blocked in Turkey, Russia, India and South Korea across a subset of Fortiguard categories. (Our dataset contained 78 categories for each country; we display only a few here for demonstration). We observe that these different countries block websites of various categories in different proportions. There appears to be meaningful variation in the data across countries.</p>
@@ -499,9 +498,9 @@ and Russia&#x2014;countries which had only two domains in common in Experiment
 </div>
 </div>
 
-<div id="outline-container-org7b83712" class="outline-2">
-<h2 id="org7b83712">Our proxy measure</h2>
-<div class="outline-text-2" id="text-org7b83712">
+<div id="outline-container-org219b4a2" class="outline-2">
+<h2 id="org219b4a2">Our proxy measure</h2>
+<div class="outline-text-2" id="text-org219b4a2">
 <div id="fig1"></div>
 <script>
   index.InteroperabilityVisualization({
@@ -522,43 +521,47 @@ and Russia&#x2014;countries which had only two domains in common in Experiment
   });
 </script>
 
-<div id="org356b362" class="figure">
+<div id="org0248db1" class="figure">
 <p><img src="./img/dummy.png" alt="dummy.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Force-directed graph of similarities in our dataset.</p>
 </div>
 
+
 <p>
-This proxy reveals a large cluster of countries that are mostly similar to one
-another. These are countries with little to no blocking (Israel, Iceland, USA,
-Finland); they lie close together.
+First, our proxy reveals a large cluster of countries that are mostly similar to
+one another. Most of the countries in our dataset, in fact, lie close together,
+forming one tight component of countries with mostly similar content blocking
+policies.
 </p>
 
 <p>
-However, the metric also reveals a few surprises. Venezuela stands alone,
-blocking a unique mixture of reference content (13.9%), games (10.4%) and
-educational pages (11.9%). Saudi Arabia is most similar to South Korea and
-Turkey. Sites categorized <i>News and Media</i> account for a similar proportion of
-blocked content in Saudi Arabia as they do in South Korea (10.1% and 12.4%,
-respectively), as do <i>Advocacy Organizations</i> (0.99% and 1.63%) and <i>Newsgroups
-and Messageboard</i> (1.2% and 2.6%). Together, Saudi Arabia, South Korea, Turkey
-and Russia form a looser cluster.
+Second, our proxy reveals the connectivity patterns of those countries that are
+<i>not</i> members of this connected cluster. Venezuela stands alone, blocking a
+unique mixture of reference content (13.9%), games (10.4%) and educational pages
+(11.9%). Saudi Arabia, South Korea, Turkey and Russia form another, looser
+cluster.
 </p>
 
 <p>
-Other countries with blocking are more or less unique. China and India stand
-apart from both this loose, four-country cluster and
+South Korea's presence in this cluster surprised us. However, sites categorized
+<i>News and Media</i> account for a similar proportion of blocked content in Saudi
+Arabia as they do in South Korea (10.1% and 12.4%, respectively), as do
+<i>Advocacy Organizations</i> (0.99% and 1.63%) and <i>Newsgroups and Messageboard</i>
+(1.2% and 2.6%).
 </p>
 
 <p>
 In general, our metric captures significant differences between countries
-typically considered to have “closed” internets. China, which is popularly
-imagined to export its Internet to its Belt &amp; Road allies <span class="underline">[]</span>, in fact has low
-similarity with such countries. It is relatively unique, 90% similar to Hong
-Kong. Otherwise, it shares noteable similarities only with Lichtenstein, for
-which <i>News and Media</i> sites comprise 19.8% of blocked content (compared to
-57.4% in China).
+typically considered to have “closed” internets. For example, China and India
+stand apart from both this loose, four-country cluster. China, which is
+popularly imagined to export its Internet to its Belt &amp; Road allies <span class="underline">[]</span>, in
+fact has low similarity with such countries. It is relatively unique, 90%
+similar to Hong Kong. Otherwise, it shares noteable similarities only with
+Lichtenstein, for which <i>News and Media</i> sites comprise 19.8% of blocked content
+(compared to 57.4% in China).
 </p>
+
 
 <div id="fig2"></div>
 
@@ -581,7 +584,7 @@ which <i>News and Media</i> sites comprise 19.8% of blocked content (compared to
   });
 </script>
 
-<div id="org7141504" class="figure">
+<div id="orgb1a3824" class="figure">
 <p><img src="./img/dummy.png" alt="dummy.png" />
 </p>
 <p><span class="figure-number">Figure 4: </span>China's blocking patterns are relatively unique, sharing noteable similarities only with Hong Kong and, to a lesser degree, with Lichtenstein.</p>
@@ -603,17 +606,17 @@ The value of our findings is, as suggested earlier, dual. First, this work
 provides a new and more dynamic metric of alignment that supplements existing
 metrics. In this section, we examined our metric in this context. Second, our
 metric may complement other measures of international relations (e.g., of trade
-or of civil rights policy). The following section turns to this possibility,
-comparing our metric to existing facets of the international order and asking to
-what degree our measurement is distinctive, and to what degree it overlaps with
-traditional domains of measurement in international relations.
+or of civil rights policy). The following section turns to this possibility. We
+compare our metric to existing proxies of alignment in the international order
+and ask to what degree our measurement is distinctive, and to what degree it
+overlaps with traditional domains of measurement in international relations.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd96b0cc" class="outline-2">
-<h2 id="orgd96b0cc">Comparisons to other domains</h2>
-<div class="outline-text-2" id="text-orgd96b0cc">
+<div id="outline-container-orgb6a2475" class="outline-2">
+<h2 id="orgb6a2475">Comparisons to other domains</h2>
+<div class="outline-text-2" id="text-orgb6a2475">
 <p>
 How does Internet governance, as measured by our proxy metric, relate to other
 domains in international relations? In this section, we correlate our metric to
@@ -625,11 +628,11 @@ these domains.
 </p>
 </div>
 
-<div id="outline-container-org79131c6" class="outline-3">
-<h3 id="org79131c6">Trade alliances: European Union (EU)</h3>
-<div class="outline-text-3" id="text-org79131c6">
+<div id="outline-container-org21d3761" class="outline-3">
+<h3 id="org21d3761">Trade alliances: European Union (EU)</h3>
+<div class="outline-text-3" id="text-org21d3761">
 <p>
-<a id="orgc53dce8"></a>
+<a id="org8f8a2ca"></a>
 </p>
 
 <p>
@@ -665,9 +668,9 @@ p = 0.41).
 </p>
 </div>
 
-<div id="outline-container-orgbc4d488" class="outline-4">
-<h4 id="orgbc4d488">Takeaways</h4>
-<div class="outline-text-4" id="text-orgbc4d488">
+<div id="outline-container-org9b695e1" class="outline-4">
+<h4 id="org9b695e1">Takeaways</h4>
+<div class="outline-text-4" id="text-org9b695e1">
 <p>
 We find that EU countries are overall more similar to one another than they are
 to the rest of the world. There are a few possible explanations for this
@@ -705,9 +708,9 @@ similar blocking profiles.
 </div>
 </div>
 
-<div id="outline-container-org6df23ed" class="outline-3">
-<h3 id="org6df23ed">Military alliances</h3>
-<div class="outline-text-3" id="text-org6df23ed">
+<div id="outline-container-org6163152" class="outline-3">
+<h3 id="org6163152">Military alliances</h3>
+<div class="outline-text-3" id="text-org6163152">
 <p>
 Increasing concern about “cyberwar” makes it plain that many see the Internet as
 a key tool in military conflict. However, military alliances signal policy
@@ -746,9 +749,9 @@ significance (U=814, p=0.084).
 </div>
 
 
-<div id="outline-container-orgd4161ad" class="outline-4">
-<h4 id="orgd4161ad">Takeaways</h4>
-<div class="outline-text-4" id="text-orgd4161ad">
+<div id="outline-container-org5d5f7d9" class="outline-4">
+<h4 id="org5d5f7d9">Takeaways</h4>
+<div class="outline-text-4" id="text-org5d5f7d9">
 <p>
 NATO countries are significantly more similar to one another in Internet
 blocking patterns than they are to non-NATO countries. It is interesting to note
@@ -776,9 +779,9 @@ why does this make sense?</span>
 </div>
 </div>
 
-<div id="outline-container-orgf2df833" class="outline-3">
-<h3 id="orgf2df833">Personal and press freedom</h3>
-<div class="outline-text-3" id="text-orgf2df833">
+<div id="outline-container-orgaee61bb" class="outline-3">
+<h3 id="orgaee61bb">Personal and press freedom</h3>
+<div class="outline-text-3" id="text-orgaee61bb">
 <p>
 Reporters Without Borders’ <a href="https://rsf.org/en/ranking">World Press Freedom Index</a> quantifies the degree of
 freedom available to journalists in 180 countries. We find a moderate positive
@@ -796,7 +799,11 @@ Freedom ranking and Internet blocking similarity, r(1483) = 0.45, p&lt;0.001. Th
 Freedom in the World index and the World Press Freedom indices are themselves
 highly positively correlated with one another, r(156) = 0.85, p&lt;0.001.
 </p>
+</div>
 
+<div id="outline-container-org25087b5" class="outline-4">
+<h4 id="org25087b5">Takeaways</h4>
+<div class="outline-text-4" id="text-org25087b5">
 <p>
 The presence of a positive correlation between blocking similarities implies
 that changes to our Internet blocking metric could predict changes to press
@@ -821,12 +828,13 @@ potentially to a more fine-grained proxy metric of website blocking.
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-orgc19d11c" class="outline-3">
-<h3 id="orgc19d11c">Cultural and historical ties: Commonwealth countries</h3>
-<div class="outline-text-3" id="text-orgc19d11c">
+<div id="outline-container-orgc3d1d22" class="outline-3">
+<h3 id="orgc3d1d22">Cultural and historical ties: Commonwealth countries</h3>
+<div class="outline-text-3" id="text-orgc3d1d22">
 <p>
-<a id="org31a1905"></a>
+<a id="orga5c7cf9"></a>
 </p>
 
 <p>
@@ -862,9 +870,9 @@ outside-Commonwealth (M=0.89) group (U=9922, p=0.59).
 </p>
 </div>
 
-<div id="outline-container-orge30b86b" class="outline-4">
-<h4 id="orge30b86b">Takeaways</h4>
-<div class="outline-text-4" id="text-orge30b86b">
+<div id="outline-container-org2c97462" class="outline-4">
+<h4 id="org2c97462">Takeaways</h4>
+<div class="outline-text-4" id="text-org2c97462">
 <p>
 Our finding implies that Commonwealth heritage is not reflected in website
 blocking. This throws into question the degree to which our previous
@@ -886,9 +894,9 @@ legal similarities may explain variance in Internet blocking patterns.
 </div>
 </div>
 
-<div id="outline-container-orgab2968e" class="outline-2">
-<h2 id="orgab2968e">Conclusion</h2>
-<div class="outline-text-2" id="text-orgab2968e">
+<div id="outline-container-orgc4ae983" class="outline-2">
+<h2 id="orgc4ae983">Conclusion</h2>
+<div class="outline-text-2" id="text-orgc4ae983">
 <p>
 This work presents Internet blocking as a proxy of policy alignment. It
 represents policy in a domain not well-studied by other proxies of alignment:
@@ -952,9 +960,9 @@ it relates, at least somewhat, to existing metrics.
 </div>
 
 
-<div id="outline-container-orgf991c38" class="outline-2">
-<h2 id="orgf991c38">Appendix</h2>
-<div class="outline-text-2" id="text-orgf991c38">
+<div id="outline-container-org6649fbe" class="outline-2">
+<h2 id="org6649fbe">Appendix</h2>
+<div class="outline-text-2" id="text-org6649fbe">
 <div id="fig3"></div>
 <script>
   index.InteroperabilityVisualization({
@@ -978,25 +986,23 @@ it relates, at least somewhat, to existing metrics.
   });
 </script>
 
-<div id="org465ce5d" class="figure">
+<div id="org1d98632" class="figure">
 <p><img src="./img/dummy.png" alt="dummy.png" />
 </p>
 <p><span class="figure-number">Figure 5: </span>A map of similarities between countries' website blocking patterns. Click on countries to view their similarities with other countries.</p>
 </div>
 </div>
-
-
-<div id="outline-container-orgcd61390" class="outline-3">
-<h3 id="orgcd61390">Data, code and visualization</h3>
-<div class="outline-text-3" id="text-orgcd61390">
+<div id="outline-container-orgfbe96f8" class="outline-3">
+<h3 id="orgfbe96f8">Data, code and visualization</h3>
+<div class="outline-text-3" id="text-orgfbe96f8">
 <p>
 Our metric, and the code used to generate it, are <a href="https://github.com/daylight-lab/website-blocking-proxy">available via GitHub</a>. The code that powers our interactive visualizations are also <a href="https://github.com/lilybhattacharjee5/interoperability-demo">accessible via GitHub</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc91e310" class="outline-3">
-<h3 id="orgc91e310">Data cleaning</h3>
-<div class="outline-text-3" id="text-orgc91e310">
+<div id="outline-container-orgbc803ad" class="outline-3">
+<h3 id="orgbc803ad">Data cleaning</h3>
+<div class="outline-text-3" id="text-orgbc803ad">
 <p>
 We had 12 datasets (.csv files) ranging from January 2017 to September 2018 which
 amounted to a total of 50,436,865 observations. Each observation represents a
@@ -1024,13 +1030,13 @@ with 78 categories of website blocking across 55 countries.
 </div>
 </div>
 
-<div id="outline-container-org3c0641b" class="outline-3">
-<h3 id="org3c0641b">Limitations</h3>
-<div class="outline-text-3" id="text-org3c0641b">
+<div id="outline-container-orga15c843" class="outline-3">
+<h3 id="orga15c843">Limitations</h3>
+<div class="outline-text-3" id="text-orga15c843">
 </div>
-<div id="outline-container-org0295f8c" class="outline-4">
-<h4 id="org0295f8c">ICLab data</h4>
-<div class="outline-text-4" id="text-org0295f8c">
+<div id="outline-container-org140e634" class="outline-4">
+<h4 id="org140e634">ICLab data</h4>
+<div class="outline-text-4" id="text-org140e634">
 <p>
 While ICLab does a good job at detecting when a website is blocked, there are a
 few limitations that hinder our ability to reliably decide if a given webpage is
@@ -1077,9 +1083,9 @@ which the Internet is different across different countries.
 </div>
 </div>
 
-<div id="outline-container-org938a36d" class="outline-4">
-<h4 id="org938a36d">Content categorization</h4>
-<div class="outline-text-4" id="text-org938a36d">
+<div id="outline-container-org1fca2a8" class="outline-4">
+<h4 id="org1fca2a8">Content categorization</h4>
+<div class="outline-text-4" id="text-org1fca2a8">
 <p>
 FortiGuard doesn't capture the fine-grained thematic content of a website.
 FortiGuard <a href="https://fortiguard.com/webfilter?q=https://www.facebook.com/BlackLivesMatter/&amp;version=8">classifies the Facebook BlackLivesMatter group as "social
@@ -1116,9 +1122,9 @@ a proxy for policy.
 </div>
 </div>
 
-<div id="outline-container-orgc27c3e9" class="outline-4">
-<h4 id="orgc27c3e9">False negatives</h4>
-<div class="outline-text-4" id="text-orgc27c3e9">
+<div id="outline-container-orga50c71c" class="outline-4">
+<h4 id="orga50c71c">False negatives</h4>
+<div class="outline-text-4" id="text-orga50c71c">
 <p>
 One epistemic issue in our dataset is possible false negatives. As an example of
 when this issue might crop up, consider China and India. China and india both
@@ -1149,7 +1155,7 @@ within apps then with specific URLs.
 <div id="postamble" class="status">
 <p class="date">Date: 2020-08-11 Tue 00:00</p>
 <p class="author">Author: Nick Merrill</p>
-<p class="date">Created: 2020-09-23 Wed 09:43</p>
+<p class="date">Created: 2020-09-24 Thu 12:21</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
