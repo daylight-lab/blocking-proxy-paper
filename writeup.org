@@ -58,13 +58,12 @@ policy alignment.
 
 ** Webpage blocking as a proxy of policy alignment
 
-Currently, no proxy of policy alignment currenty measures Internet governance.
-Internet governance refers to the policies that shape the Internet in any given
-country. The Internet is a relatively new domain of International policy
-competition, as well as a new domain in which trade, cooperation and conflict
-all take place. In addition, we can collect data on our metric continuously,
-allowing us to detect changes in policy alignment much more quickly than other
-metrics can afford.
+Currently, no proxy of policy alignment measures Internet governance. Internet
+governance refers to the policies that shape the Internet in any given country.
+The Internet is a relatively new domain of International policy competition, as
+well as a new domain in which trade, cooperation and conflict all take place. In
+addition, we can collect data on our metric continuously, allowing us to detect
+changes in policy alignment much more quickly than other metrics can afford.
 
 One critical component of Internet governance is webpage blocking. Website
 blocking, typically enacted directly by governments, makes a particular URL
@@ -80,7 +79,6 @@ similar content (more on what "similar" means later), we consider this alignment
 a proxy of policy alignment on Internet governance issues. They may not have
 conferred, but their blocking decision reveals a shared outlook or set of
 geopolitical goals.
-
 
 * Methods
 
@@ -524,18 +522,32 @@ US thinking about blocking TikTok), our metric could indicate how this blocking
 event would change the structure of similarity relations globally.
 
 In the future, we aim to develop our tool to be more comprehensive, covering
-multiple layers of the TCP/IP stack. This metric, which covers content blocking
-alone, focuses on the ``application'' layer of DNS and HTTP. Our future work
-could explore fragmentation ``lower down'' the stack (e.g., at the protcol
-layer, where a transition from IPv4 to IPv6 plays out unevenly around the
-globe). Future work could also explore fragmentation ``higher up'' the stack,
-looking at laws that limit data flow or enforce Internet sovreignty
+multiple layers of the TCP/IP stack (Table [[tab:layers]]). This metric, which
+covers content blocking alone, focuses on the "application" layer of DNS and
+HTTP. Our future work could explore fragmentation "lower down" the stack (e.g.,
+at the protcol layer, where a transition from IPv4 to IPv6 plays out unevenly
+around the globe). Future work could also explore fragmentation "higher up" the
+stack, looking at laws that limit data flow or enforce Internet sovreignty
 cite:Bejtlich2015.
 
+#+caption: A "layer" model of the Internet, with possible proxies for each layer. The work we present here only covers Layer 4.
+#+label: tab:layers
+| *Layer*            | *Number*  | *Our proxy*                 |
+|--------------------+-----------+-----------------------------|
+| Legal/social/human | Layer 5   | Data locality laws          |
+| /Application/      | /Layer 4/ | /Website blocking/          |
+| Transport          | Layer 3   | Network interference events |
+| Network            | Layer 2   | IPv4 to IPv6 transition     |
+| Link               | Layer 1   | Physical infrastructure     |
+
+
+
 We also aim to collect data more frequently, updating our metric as continuously
-as possible (and archiving prior metrics). If we collect website blocking data
-day-to-day, we could detect sudden changes in blocking patterns. These changes
-could themselves act as harbingers of changes to the international order.
+as possible (and archiving prior metrics). The [[https://ooni.org/][Open Observatory of Network
+Interference]] (OONI) collects Internet measurements continuously, including data
+about website blocking. These terabytes of data, collected second-to-second,
+could be used to detect sudden changes in blocking patterns. These changes could
+themselves act as harbingers of changes to the international order.
 
 Overall, we present our metric as a tool for future research. Our correlations
 are, by nature of our contribution, somewhat cursory: our primary goal in this
@@ -607,8 +619,7 @@ blocked or not.
 1. Particular websites may discriminate against VPN users. For example, Netflix
    blocks all known VPNs. This may make a website appear to be blocked when it
    really isn't. For now, we correct for this by tossing out all websites that
-   appear to be blocked in the US, as we know the US does not block any websites
-   (at least not in the traditional sense ).
+   appear to be blocked in the US, as we know the US does not block any websites, at least in the traditional sense. [fn:2]
 2. Some VPN providers manipulate traffic themselves (sometimes injecting ads).
 3. Lists of URLs to test are biased. What websites do you test for blocking?
    ICLab cobbles together numerous datasets from across the web, but some
@@ -646,7 +657,7 @@ which the Internet is different across different countries.
 
 FortiGuard doesn't capture the fine-grained thematic content of a website.
 FortiGuard [[https://fortiguard.com/webfilter?q=https://www.facebook.com/BlackLivesMatter/&version=8][classifies the Facebook BlackLivesMatter group as "social
-networking"]], indicating that FortiGuard does not capture the subject matter of
+networking,"]] indicating that FortiGuard does not capture the subject matter of
 particular Facebook pages. FortiGuard’s 87 categories are based on the user
 needs of their “three major groups of customers: enterprises, schools and
 homes/families.”[fn:1] It is unclear that these categories are a perfect fit for
@@ -687,5 +698,13 @@ within apps then with specific URLs.
 
 
 * Footnotes
+
+[fn:2] While the United States does not block websites by interfering with
+network traffic, the United States does use its legal system to seize websites
+that violate US law. One prolific effort is [[https://www.ice.gov/factsheets/ipr-in-our-sites][Operation In Our Sites]], managed by
+Immigration and Customs Enforcement (ICE). While this activity does constitute
+Internet censorship, it does not cause Internet fragmentation /per se/, as
+seized websites become equally unavailable worldwide. Future work should monitor
+US website seizing operations more closely.
 
 [fn:1] https://fortiguard.com/webfilter/categories
