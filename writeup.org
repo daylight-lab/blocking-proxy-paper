@@ -730,5 +730,4 @@ activity does constitute Internet censorship, it does not cause Internet
 fragmentation /per se/, as seized websites become equally unavailable worldwide.
 Future work should monitor US website seizing operations more closely.
 
-
 bibliography:refs.bib
