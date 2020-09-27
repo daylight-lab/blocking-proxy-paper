@@ -1,10 +1,14 @@
 #+title: Website Blocking as a Proxy of Policy Alignment
 # #+subtitle: 
 #+author: Nick Merrill
-#+options: num:nil toc:nil
+#+options: num:nil toc:nil ^:nil
 #+date: [2020-08-11 Tue]
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css"/>
 #+HTML_HEAD: <script type="text/javascript" src="js/index.bundle.js"></script>
+#+CSL_STYLE: first-monday.csl
+
+
+by Nick Merrill and Steve Weber
 
 * Abstract
 
@@ -36,7 +40,7 @@ gaps.
 Given two countries, policy alignment refers to the degree to which policies in
 those two countries are similar along some set of dimensions. Since a country's
 policy stance on any given set of issues is complex to the point of being
-unobservable in a measurable way, /proxies/ of policy stances are used.
+unobservable in a measurable way, researchers use /proxies/ of policy stances.
 
 UN voting patterns provide an illustrative example. If two countries vote the
 same way in the UN, researchers can use this behavior as a proxy to assess
@@ -49,11 +53,11 @@ collaborating (e.g., in formal agreements) to show policy alignment (although
 they might be). They may be voting the same way because of some underlying,
 driving causal factor (e.g., a shared ideology, or shared geopolitical goals).
 
-This notion of "alignment" is used as a predictive variable for other phenomena
-of interest, including but not limited to formal treaties and alliances. Two
-countries that have high policy alignment are more likely to support each other
-in a conflict with a third party, for example, than two countries with low
-policy alignment cite:pauls2017affinity.
+Researchers use this notion of "alignment" as a predictive variable for other
+phenomena of interest, including but not limited to formal treaties and
+alliances. Two countries that have high policy alignment are more likely to
+support each other in a conflict with a third party, for example, than two
+countries with low policy alignment cite:de1983war.
 
 
 ** Webpage blocking as a metric of policy alignment
@@ -91,8 +95,8 @@ follow-up TCP packets that either break or supersede the legitimate response.
 Yet another option is to make a legal case to a particular service provider (for
 example, asking Facebook to block a page in a particular country).
 
-[[http://iclab.org/][ICLab]], a longitudinal corpus of website blocking events, seeks to deal with this
-diversity in blocking strategies. It focuses on consistency in blocking
+ICLab, a longitudinal corpus of website blocking events, seeks to deal with this
+diversity in blocking strategies cite:niaki2020iclab. It focuses on consistency in blocking
 measurements across countries and over time. As of this writing, the ICLab has
 collected twelve datasets ranging from January, 2017 to September, 2018. In this
 paper, we use the ICLab dataset to produce a metric of policy alignment with
@@ -121,16 +125,16 @@ root domains. Consider the webpage =facebook.com/some-page= and the webpage
 blocks the second, is that overlap? By our prior method, this would not count as
 overlap. However, by this method, it would: they're both blocking the same root
 domain (=facebook.com=). To achieve this, we performed the same steps as in
-Experiment 1, but used Python’s [[https://pypi.org/project/tldextract/][tldextract]] library to separate domains and
+Experiment 1, but used the Python library tldextract to separate domains and
 suffixes from site urls. We removed any duplicate domain-suffix pairs. However,
-we still observe very little overlap with this approach. For example, Turkey and
+we still observe little overlap with this approach. For example, Turkey and
 Russia have 121 and 340 blocking events in our dataset, respectively, but only
 23 websites in common.
 
 ** Attempt 3: Overlap in content of blocked webpages
 Not only do the Experiment 1 and Experiment 2 methods produce minimal variation
 in the data, they also lose some important sources of variation: the themes of
-the content these two countries are interested in blocking. In some sense, this
+the content these two countries block. In some sense, this
 seems intuitively closer to the true source of variation we are seeking to
 measure. Two states may block different websites that are, in practical terms,
 “the same” in that both represent content that state is trying to exclude.
@@ -155,10 +159,9 @@ FortiGuard provides a “web filter” for corporations, allowing networks to bl
 (for example) pornography or gambling sites. To make this service work,
 FortiGuard maintains a URL classification service, which returns a category for
 any given URL. FortiGuard maintains 87 different classifications
-cite:fortiguard_2020. Their ontology is tailored toward the instrumental
-purpose of maintaining corporate web policies; we return to the implications of
-this ontology, as well as alternative ontologies, in our discussion and
-limitations sections.
+cite:fortiguard_2020. They tailor their ontology toward those who maintain
+corporate web policies; we return to the implications of this ontology, as well
+as alternative ontologies, in our discussion and limitations sections.
 
 For each country, we take the FortiGuard classification of each URL. We are left
 with a set of classifications, which we can represent proportionally: we can
@@ -313,7 +316,7 @@ between economies. This interdependence would become more expensive to sustain
 if Internet policies between these two countries were highly discrepant; thus,
 Internet governance policies converge. While real causal relationships are
 likely mixed, both causal pathways give us reason to suspect that trade
-relationships might be correlated with shared Internet blocking policies.
+relationships might correlate with shared Internet blocking policies.
 
 # *** EU vs non-EU
 As a case study, we looked to the European Union. We collected the similarity
@@ -375,7 +378,7 @@ sacrifice a great deal for another actor, which in turn suggests policy
 alignment cite:de1983war.
 
 # *** North Atlantic Treaty Organization (NATO)
-Is shared digital policy around website blocking related to shared military
+Does shared digital policy around website blocking relate to shared military
 objectives? To evaluate this question, we started with the North Atlantic Treaty
 Organization (NATO), an intergovernmental military alliance between 30 North
 American and European countries. If digital-layer blocking policy is related to
@@ -517,7 +520,7 @@ and vice versa.
 At the same time, our work demonstrates the value and relevance of Internet
 fragmentation to policymakers. Internet fragmentation is not simply a technical
 issue. Internet fragmentation, at least as measured by content blocking, appears
-to be entangled with many aspects of the global order.
+to be entangled with other aspects of the global order.
 
 As such, future work could attempt to assess the usefulness of this metric as a
 “leading indicator” of changes to international relations. Unlike other metrics
@@ -650,9 +653,6 @@ blocked or not.
    observations constitute actual interference. More data from more vantage
    points could resolve some of this ambiguity.
 
-# With future funding, we could very easily contribute to ICLab to help overcome a
-# few of these issues—it could be interesting to think about a piece of this to
-# break off and make our own.
 
 A more fundamental issue with ICLab data is that the blocking events in this
 dataset do not necessarily relate to government action. Individual websites,
@@ -663,10 +663,10 @@ which the Internet is different across different countries.
 
 *** Content categorization
 
-FortiGuard doesn't capture the fine-grained thematic content of a website.
+FortiGuard does not capture the fine-grained thematic content of a website.
 FortiGuard [[https://fortiguard.com/webfilter?q=https://www.facebook.com/BlackLivesMatter/&version=8][classifies the Facebook BlackLivesMatter group as "social
 networking,"]] indicating that FortiGuard does not capture the subject matter of
-particular Facebook pages. FortiGuard’s 87 categories are based on the user
+particular Facebook pages. FortiGuard’s bases their 87 categories on the user
 needs of their “three major groups of customers: enterprises, schools and
 homes/families” cite:fortiguard_2020. It is unclear that these categories are a perfect fit for
 our usecase of measuring or detecting policies behind website blocking
@@ -704,15 +704,31 @@ Alternatively, this difference in the number of blocked websites may be an
 artifact of the nature of blocking in China, which could focus more on content
 within apps then with specific URLs.
 
+* About the authors
 
-* Footnotes
+*Nick Merrill* directs the Daylight Lab at the UC Berkeley Center for Long-Term Cybersecurity.
+
+E-mail: ffff at berkeley dot edu
+
+*Steve Weber* is a Professor at the School of Information at UC Berkeley, wher
+ he directs the Center for Long-Term Cybersecurity.
+
+E-mail: steven_weber at berkeley dot edu
+
+* Acknowledgements
+
+We would like to thank Akhilesh Pandita for his data analysis and Lily
+Bhattacharjee for her work on the data visualization.
+
+* Notes
 
 [fn:2] While the United States does not block websites by interfering with
 network traffic, the United States does use its legal system to seize websites
 that violate US law. One prolific effort is Operation In Our Sites, managed by
-Immigration and Customs Enforcement (ICE). cite:kopel2013operation While this
+Immigration and Customs Enforcement (ICE). cite:kopel2013operation. While this
 activity does constitute Internet censorship, it does not cause Internet
 fragmentation /per se/, as seized websites become equally unavailable worldwide.
 Future work should monitor US website seizing operations more closely.
 
-#+BIBLIOGRAPHY: refs plain limit:t option:-nokeywords
+
+bibliography:refs.bib
