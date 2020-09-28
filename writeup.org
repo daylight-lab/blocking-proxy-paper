@@ -88,7 +88,7 @@ geopolitical goals.
 
 From a technical standpoint, there are a variety of methods for blocking webpages. One
 option is to manipulate domain name system (DNS) messages in order to make
-websites appear unresolveable. Another option is to drop TCP handshake packages
+websites appear unresolvable. Another option is to drop TCP handshake packages
 with particular destination IPs, effectively making IP addresses impossible to
 contact. A related option is to allow the TCP handshake to occur, but inject
 follow-up TCP packets that either break or supersede the legitimate response.
@@ -280,9 +280,9 @@ measure. A few websites demonstrate a moderate volume of blocking while
 retaining a degree of interoperability with this main block. Vietnam, Serbia,
 Singapore, Belize, Taiwan, Bulgaria, Ukraine and Hong Kong all surround the the
 perimeter of this main, interoperable Internet (Figure [[fig:force-directed]]),
-retaining moderately high similarities with countries in the cneter. These
+retaining moderately high similarities with countries in the center. These
 "perimeter" countries indicate important variations in our dataset, perhaps
-signalling a dual risk and opportunity of deviating from the global Internet on
+signaling a dual risk and opportunity of deviating from the global Internet on
 one hand, and enforcing national sovereignty on the other.
 
 The value of our findings is, as suggested earlier, dual. First, this work
@@ -419,7 +419,6 @@ At the same time, and in contrast to NATO countries, ASEAN countries are not
 significantly self-similar. This finding reinforces the view that ASEAN is a
 less coherent, less institutionally robust alliance than is NATO
 cite:acharya2014constructing.
-
 
 ** Personal and press freedom
 
@@ -594,11 +593,7 @@ themselves act as harbingers of changes to the international order.
 #+END_EXPORT
 #+CAPTION: A map of similarities between countries' website blocking patterns. Click on countries to view their similarities with other countries.
 #+LABEL: fig:force-directed
-[[./img/dummy.png]]
 
-# TODO distribution of similarity metrics? show the nice variation?
-#+CAPTION: Distribution of similarity metrics in our dataset. Most pairs of countries have a high similarity, with a long tail of pairs that have a low similarity.
-#+LABEL: fig:proxy-dist
 ** Data, code and visualization
 Our metric, and the code used to generate it, are [[https://github.com/daylight-lab/website-blocking-proxy][available via GitHub]]. The code that powers our interactive visualizations are also [[https://github.com/lilybhattacharjee5/interoperability-demo][accessible via GitHub]].
 ** Data cleaning
