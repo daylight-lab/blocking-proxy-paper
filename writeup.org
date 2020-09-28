@@ -159,9 +159,9 @@ FortiGuard provides a “web filter” for corporations, allowing networks to bl
 (for example) pornography or gambling sites. To make this service work,
 FortiGuard maintains a URL classification service, which returns a category for
 any given URL. FortiGuard maintains 87 different classifications
-cite:fortiguard_2020. They tailor their ontology toward those who maintain
-corporate web policies; we return to the implications of this ontology, as well
-as alternative ontologies, in our discussion and limitations sections.
+cite:fortiguard_2020. They tailor their categorization scheme toward corporate
+web policies; we return to the implications of this ontology, as well as
+alternative ontologies, in our discussion and limitations sections.
 
 For each country, we take the FortiGuard classification of each URL. We are left
 with a set of classifications, which we can represent proportionally: we can
