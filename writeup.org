@@ -12,10 +12,10 @@ by Nick Merrill and Steve Weber
 
 * Abstract
 
-This work introduces a new proxy measure of policy alignment between states: website
-blocking. This measure speaks to the information flow in the digital layer of
-international politics, a new element to international trade and cooperation,
-and one which existing metrics fail to capture. In addition, our 
+This work introduces a new proxy measure of policy alignment between states:
+website blocking. This measure speaks to the information flow in the digital
+layer of international politics, a new element to international trade and
+cooperation, and one which existing metrics fail to capture. In addition, our
 measure can be constantly scraped and updated, offering a higher temporal
 resolution than existing metrics. Our work suggests a link between Internet
 governance and other issues in international relations. Since we can capture our
