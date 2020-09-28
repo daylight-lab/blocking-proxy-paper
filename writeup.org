@@ -623,49 +623,63 @@ with 78 categories of website blocking across 55 countries.
 
 ** Limitations
 *** ICLab data
+
 While ICLab does a good job at detecting when a website is blocked, there are a
 few limitations that hinder our ability to reliably decide if a given webpage is
 blocked or not.
 
-1. Particular websites may discriminate against VPN users. For example, Netflix
-   blocks all known VPNs. This may make a website appear to be blocked when it
-   really isn't. For now, we correct for this by tossing out all websites that
-   appear to be blocked in the US, as we know the US does not block any websites, at least in the traditional sense. [fn:2]
-2. Some VPN providers manipulate traffic themselves (sometimes injecting ads).
-3. Lists of URLs to test are biased. What websites do you test for blocking?
-   ICLab cobbles together numerous datasets from across the web, but some
-   (especially the Citizen Lab lists) suffer from selection bias, as they're
-   manually curated by activists with a particular political bent.
-4. Vantage points can be difficult to set up in countries where blocking is
-   rampant, and in countries with adversarial regimes. These points are
-   typically set up by volunteers. For example, Iran and Syria have no
-   volunteers for now, as the ICLab maintainers decided the political situation
-   is too risky there. ICLab lost access to VPNs in Iran in May 2017 due to
-   sanctions, resulting in missing data in that country. Missing data in that
-   country makes there appear to be little blocking, when in fact website blocking
-   may be much higher than we are measuring.
-5. Countries could evade blocking detection. If a country can conceal its
-   website blocking actions, how would we know they're doing it? This is a major
-   source of epistemic risk: countries may be using secret or unknown mechanisms
-   to achieve blocking in certain countries, or may be strategically avoiding
-   blocking content to vantage points such as VPNs.
-6. TCP handshakes create some uncertainty as we’re not sure whether the
-   observations constitute actual interference. More data from more vantage
-   points could resolve some of this ambiguity.
+First, particular websites may discriminate against VPN users. For example,
+Netflix blocks all known VPNs. This may make a website appear to be blocked when
+it really is not.
 
+Second, while the United States does not block websites by interfering with
+network traffic, the United States does use its legal system to seize websites
+that violate US law. One prolific effort is Operation In Our Sites, managed by
+Immigration and Customs Enforcement (ICE). cite:kopel2013operation. While this
+activity does constitute Internet censorship, it does not cause Internet
+fragmentation /per se/, as seized websites become equally unavailable worldwide.
+Future work should monitor US website seizing operations more closely.
 
-A more fundamental issue with ICLab data is that the blocking events in this
-dataset do not necessarily relate to government action. Individual websites,
-such as Netflix, can choose to block traffic originating from particular
-countries. We decided to include these cases of probable non-government
-blocking, as they still show a degree of Internet fragmentation---the degree to
-which the Internet is different across different countries.
+Third, some VPN providers manipulate traffic themselves (sometimes injecting
+ads).
+
+Fourth, lists of URLs to test are biased. What websites should one test for
+blocking? ICLab cobbles together numerous datasets from across the web, but some
+(especially the Citizen Lab lists) suffer from selection bias, as they're
+manually curated by activists with a particular political bent.
+
+Fifth, vantage points can be difficult to set up in countries where blocking is
+rampant, and in countries with adversarial regimes. These points are typically
+set up by volunteers. For example, Iran and Syria have no volunteers for now, as
+the ICLab maintainers decided the political situation is too risky there. ICLab
+lost access to VPNs in Iran in May 2017 due to sanctions, resulting in missing
+data in that country. Missing data in that country makes there appear to be
+little blocking, when in fact website blocking may be much higher than we are
+measuring.
+
+Sixth, countries could evade blocking detection. If a country can conceal its
+website blocking actions, how would we know they're doing it? This is a major
+source of epistemic risk: countries may be using secret or unknown mechanisms to
+achieve blocking in certain countries, or may be strategically avoiding blocking
+content to vantage points such as VPNs.
+
+Seventh, TCP handshakes create some uncertainty as we cannot be sure whether the
+observations constitute actual interference. More data from more vantage points
+could resolve some of this ambiguity.
+
+Finally, a more fundamental issue with ICLab data is that the blocking events in
+this dataset do not necessarily relate to government action. Individual
+websites, such as Netflix, can choose to block traffic originating from
+particular countries. We decided to include these cases of probable
+non-government blocking, as they still show a degree of Internet
+fragmentation---the degree to which the Internet is different across different
+countries.
 
 *** Content categorization
 
 FortiGuard does not capture the fine-grained thematic content of a website.
-FortiGuard [[https://fortiguard.com/webfilter?q=https://www.facebook.com/BlackLivesMatter/&version=8][classifies the Facebook BlackLivesMatter group as "social
-networking,"]] indicating that FortiGuard does not capture the subject matter of
+FortiGuard classifies the Facebook BlackLivesMatter group as "social
+networking," cite:fortiguard_blm indicating that FortiGuard does not capture the subject matter of
 particular Facebook pages. FortiGuard’s bases their 87 categories on the user
 needs of their “three major groups of customers: enterprises, schools and
 homes/families” cite:fortiguard_2020. It is unclear that these categories are a perfect fit for
@@ -720,14 +734,6 @@ E-mail: steven_weber at berkeley dot edu
 We would like to thank Akhilesh Pandita for his data analysis and Lily
 Bhattacharjee for her work on the data visualization.
 
-* Notes
 
-[fn:2] While the United States does not block websites by interfering with
-network traffic, the United States does use its legal system to seize websites
-that violate US law. One prolific effort is Operation In Our Sites, managed by
-Immigration and Customs Enforcement (ICE). cite:kopel2013operation. While this
-activity does constitute Internet censorship, it does not cause Internet
-fragmentation /per se/, as seized websites become equally unavailable worldwide.
-Future work should monitor US website seizing operations more closely.
 
 bibliography:refs.bib
