@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-28 Mon 08:49 -->
+<!-- 2020-11-18 Wed 10:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Website Blocking as a Proxy of Policy Alignment</title>
@@ -249,39 +249,69 @@ for the JavaScript code in this tag.
 by Nick Merrill and Steve Weber
 </p>
 
-<div id="outline-container-org4a2e29c" class="outline-2">
-<h2 id="org4a2e29c">Abstract</h2>
-<div class="outline-text-2" id="text-org4a2e29c">
+<div id="outline-container-org89a8d28" class="outline-2">
+<h2 id="org89a8d28">Abstract</h2>
+<div class="outline-text-2" id="text-org89a8d28">
 <p>
-This work introduces a new proxy measure of policy alignment between states:
-website blocking. This measure speaks to the information flow in the digital
-layer of international politics, a new element to international trade and
-cooperation, and one which existing metrics fail to capture. In addition, our
-measure can be constantly scraped and updated, offering a higher temporal
-resolution than existing metrics. Our work suggests a link between Internet
-governance and other issues in international relations. Since we can capture our
-metric in real time, we can use changes in our metric to detect possible changes
-in international relations faster than would otherwise be possible.
+This work introduces a new metric of policy alignment between states: website
+blocking. Intuitively, we measure the degree to which states block similar
+content. This metric speaks to the flow of information in the digital layer of
+international politics, an element of international trade and cooperation that
+existing metrics fail to capture. In addition, our measure can be constantly
+scraped and updated, offering a higher temporal resolution than existing
+metrics. Our work suggests a link between Internet governance and other issues
+in international relations (e.g., trade). Since our metric can be updated in
+real time, future work could use our metric to detect geopolitical shifts more
+rapidly than would otherwise be possible.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf77f958" class="outline-2">
-<h2 id="orgf77f958">Introduction</h2>
-<div class="outline-text-2" id="text-orgf77f958">
+<div id="outline-container-org26a6d60" class="outline-2">
+<h2 id="org26a6d60">Introduction</h2>
+<div class="outline-text-2" id="text-org26a6d60">
 <p>
 In international politics and political economy, the primitive unit of analysis
-is frequently the <i>state</i>. One of the important observations is how and when
-states “align” with each other. Do they support each other when it comes to
-conflict with a third party? Do they trade more than one would expect (e.g.,
-from gravity models)? Since formal trade agreements (e.g., European Union) and
-formal alliances (e.g., NATO) only capture certain aspects of states’ alignment,
-researchers have looked for other measures of policy alignment to fill in the
-gaps.
+is frequently the <i>state</i>. Early in the 1990s, popular rhetoric imagined that
+the Internet posed an intrinsic, perhaps even an insurmountable challenge to the
+power of states (<a href="#citeproc_bib_item_19">Morrison, 2009</a>). While the Internet has indeed challenged
+states to reconsider particular strategic aims (e.g., knowledge production,
+identity formation) (<a href="#citeproc_bib_item_23">Rosenau and Singh, 2002</a>), it is is increasingly
+evident as of this writing that the Internet has proven equally valuable as a
+vector for states to <i>exert</i> their power.
+</p>
+
+<p>
+Today, cyberspace is a matter of "high politics;" it is a domain in which
+conflicts central to states' security play out.
+(p. <a href="#citeproc_bib_item_8">Choucri and Clark, 2018, p. 4</a>). How do states exert power in this domain?
+Broadly, institutions mediate and organize the Internet through
+various institutions: ISPs, regulators, and standards-setting bodies, not to
+mention corporations and end-users under legal jurisdiction. States use these
+institutions and jurisdictions to exert strategic control over the Internet. For
+example, China's government uses a multitude of technical decision-making bodies
+to gain long-term political and economic advantages
+(<a href="#citeproc_bib_item_2">Ahmed and Weber, 2018</a>; <a href="#citeproc_bib_item_4">Bamman <i>et al.</i>, 2012</a>). The EU has used antitrust charges to
+check US-based Internet businesses (<a href="#citeproc_bib_item_25">Satariano, 2020</a>). More recently, the US has
+flirted with putting Chinese mobile phone apps under US juridiction, vaguely
+citing national security concerns (<a href="#citeproc_bib_item_7">Byford, 2020</a>).
 </p>
 
 
-<div id="org4d5aed4" class="figure">
+
+<p>
+In this work, we seek to understand how conflict and cooperation plays out in
+cyberspace using the notion of <i>policy alignment</i>. One of the important
+observations is how and when states “align” with each other. Do they support
+each other when it comes to conflict with a third party? Do they trade more than
+one would expect (e.g., from gravity models)? Since formal trade agreements
+(e.g., European Union) and formal alliances (e.g., NATO) only capture certain
+aspects of states’ alignment, researchers have looked for other measures of
+policy alignment to fill in the gaps.
+</p>
+
+
+<div id="orgb7c7f1b" class="figure">
 <p><img src="./img/proxy-model.jpeg" alt="proxy-model.jpeg" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Different metrics of policy alignment create connected graphs of countries. Our project adds a new topic area: the Internet.</p>
@@ -301,7 +331,7 @@ policy alignment between those countries. UN votes do not carry much weight in
 practice, but if we assume that countries cast votes on the basis of their
 overall policy positions (i.e., rather than strategically, or symbolically) then
 countries that vote similarly are more likely to have similar policies than
-countries that vote differently (<a href="#citeproc_bib_item_2">Bailey <i>et al.</i>, 2017</a>). Countries do not need to be actively
+countries that vote differently (<a href="#citeproc_bib_item_3">Bailey <i>et al.</i>, 2017</a>). Countries do not need to be actively
 collaborating (e.g., in formal agreements) to show policy alignment (although
 they might be). They may be voting the same way because of some underlying,
 driving causal factor (e.g., a shared ideology, or shared geopolitical goals).
@@ -312,74 +342,101 @@ Researchers use this notion of "alignment" as a predictive variable for other
 phenomena of interest, including but not limited to formal treaties and
 alliances. Two countries that have high policy alignment are more likely to
 support each other in a conflict with a third party, for example, than two
-countries with low policy alignment (<a href="#citeproc_bib_item_5">De Mesquita, 1983</a>).
+countries with low policy alignment (<a href="#citeproc_bib_item_9">De Mesquita, 1983</a>).
 </p>
 </div>
 
 
-<div id="outline-container-org6d4000c" class="outline-3">
-<h3 id="org6d4000c">Webpage blocking as a metric of policy alignment</h3>
-<div class="outline-text-3" id="text-org6d4000c">
+<div id="outline-container-orgaf0fbec" class="outline-3">
+<h3 id="orgaf0fbec">Website blocking as a metric of policy alignment</h3>
+<div class="outline-text-3" id="text-orgaf0fbec">
 <p>
-Currently, no metric of policy alignment measures Internet governance. Internet
-governance refers to the policies that shape the Internet in any given country.
-The Internet is a relatively new domain of International policy competition, as
-well as a new domain in which trade, cooperation and conflict all take place. In
-addition, we can collect data on our metric continuously, allowing us to detect
-changes in policy alignment much more quickly than other metrics can afford.
+The Internet has emerged as a key domain of conflict and cooperation between
+states. The way states (and other actors) govern in this shared domain is widely
+referred to as Internet governance. However, in its specifics, the term
+"Internet governance" has taken on a wide range of definitions. For our
+analysis, we follow (<a href="#citeproc_bib_item_15">Hofmann <i>et al.</i>, 2017</a>), defining Internet governance as a
+"continuous heterogeneous process of ordering" the Internet, making room for
+both formal rule-making and emergent practices of users, providers and other
+stakeholders.
 </p>
 
 <p>
-One critical component of Internet governance is webpage blocking. Website
-blocking, typically enacted directly by governments, makes a particular URL
-unavailable in a particular country. In different countries, different sets of
-websites are unavailable, either by redirecting the website request, or simply
-dropping the request or its response. While the technical means for blocking
-websites are diverse (discussed below), the end result is that a user cannot
-access a webpage.
+Measuring policy alignment in this domain is critical in understanding how
+exactly this conflict and cooperation plays out over time. However, no metric of
+policy alignment currently measures Internet governance across states. Given the
+heterogeneity of specific activities that constitute Internet governance
+(<a href="#citeproc_bib_item_15">Hofmann <i>et al.</i>, 2017</a>), doing so with a single metric would likely elide some
+richness.
 </p>
 
 <p>
-In this project, we use similarities in webpage blocking patterns to build a
-metric of policy alignment on Internet governance. If two countries block the
-similar content (more on what "similar" means later), we consider this alignment
-a proxy of policy alignment on Internet governance issues. They may not have
-conferred, but their blocking decision reveals a shared outlook or set of
+In this paper, we take an initial step toward measuring policy alignment in
+Internet governance by focusing specifically on webpage blocking. Broadly,
+website makes a particular URL unavailable in a particular country. In different
+countries, different sets of websites are unavailable, either by redirecting the
+website request, or simply dropping the request or its response. While the
+technical means for blocking websites are diverse (discussed below), the end
+result is that a user cannot access a webpage. Website blocking is typically
+enacted directly by governments, making it a fruitful first step toward
+quantifying alignment in the Internet governance policies of states
+specifically.
+</p>
+
+<p>
+We set out to use similarities in webpage blocking patterns to build a metric of
+policy alignment. If two countries block the similar content (more on what
+"similar" means later), we consider this alignment a <i>proxy</i> of policy alignment
+on Internet governance issues. These states may not have conferred with one
+another, but their blocking decision reveals a shared outlook or set of
 geopolitical goals.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga7eb2f1" class="outline-2">
-<h2 id="orga7eb2f1">Methods</h2>
-<div class="outline-text-2" id="text-orga7eb2f1">
+<div id="outline-container-org16be2e6" class="outline-2">
+<h2 id="org16be2e6">Methods</h2>
+<div class="outline-text-2" id="text-org16be2e6">
 <p>
-From a technical standpoint, there are a variety of methods for blocking webpages. One
-option is to manipulate domain name system (DNS) messages in order to make
-websites appear unresolvable. Another option is to drop TCP handshake packages
-with particular destination IPs, effectively making IP addresses impossible to
-contact. A related option is to allow the TCP handshake to occur, but inject
-follow-up TCP packets that either break or supersede the legitimate response.
-Yet another option is to make a legal case to a particular service provider (for
-example, asking Facebook to block a page in a particular country).
+From a technical standpoint, there are a variety of methods for blocking
+webpages. One option is to manipulate domain name system (DNS) messages in order
+to make websites appear unresolvable. Another option is to drop TCP handshake
+packages with particular destination IPs, effectively making IP addresses
+impossible to contact. A related option is to allow the TCP handshake to occur,
+but inject follow-up TCP packets that either break or supersede the legitimate
+response. Yet another option is to make a legal case to a particular service
+provider (for example, asking Facebook to block a page in a particular country).
+Governments may also pressure ISPs to shut down service for particular users, or
+shut down service altogether.
 </p>
 
 <p>
 ICLab, a longitudinal corpus of website blocking events, seeks to deal with this
-diversity in blocking strategies (<a href="#citeproc_bib_item_13">Niaki <i>et al.</i>, 2020</a>). It focuses on consistency in blocking
-measurements across countries and over time. As of this writing, the ICLab has
-collected twelve datasets ranging from January, 2017 to September, 2018. In this
-paper, we use the ICLab dataset to produce a metric of policy alignment with
-respect to Internet governance. We report on three attempts to use this dataset
-to do so. (Note that, before each of these experiments, we cleaned and
-pre-processed the data. See Appendix for details.).
+diversity in blocking strategies (<a href="#citeproc_bib_item_21">Niaki <i>et al.</i>, 2020</a>). It focuses on consistency
+in blocking measurements across countries and over time. As of this writing, the
+ICLab has collected twelve snapshots of blocking activity from January 2017 to
+September 2018. ICLab produced these snapshots by placing "vantage points," or
+Internet-connected devices, in countries around the world. The vantage points
+made an HTTP request to each URL from a predefined list. The responses that came
+back were stored and analyzed by the ICLab team to determine whether (and how)
+blocking occurred. (<a href="#citeproc_bib_item_21">Niaki <i>et al.</i>, 2020</a>)
+</p>
+
+<p>
+For our analysis, we combined these snapshots into a single dataset. Our
+concatenated dataset dataset mapped countries to URLs, allowing us to determine
+whether a given URL was marked as blocked in a country during any time in
+ICLab's January 2017 to September 2018 collection period. (See Appendix for the
+full dataset, along with all code used to generate it). In the following
+section, we report on three attempts to produce a metric of policy alignment
+from this dataset.
 </p>
 </div>
 
-<div id="outline-container-orge475b39" class="outline-3">
-<h3 id="orge475b39">Attempt 1: Strict overlap</h3>
-<div class="outline-text-3" id="text-orge475b39">
+<div id="outline-container-orgeeb86c2" class="outline-3">
+<h3 id="orgeeb86c2">Attempt 1: Strict overlap</h3>
+<div class="outline-text-3" id="text-orgeeb86c2">
 <p>
 The simplest metric for policy overlap would be to measure exact overlaps in
 blocked websites between countries. When two countries block the same url (e.g.,
@@ -394,9 +451,9 @@ yields no overlaps at all.
 </div>
 </div>
 
-<div id="outline-container-orgb07c225" class="outline-3">
-<h3 id="orgb07c225">Attempt 2: Fuzzy overlap</h3>
-<div class="outline-text-3" id="text-orgb07c225">
+<div id="outline-container-orge36d795" class="outline-3">
+<h3 id="orge36d795">Attempt 2: Fuzzy overlap</h3>
+<div class="outline-text-3" id="text-orge36d795">
 <p>
 To get around the lack of strict overlaps in website blocking, we next attempted
 to measure "fuzzy" overlaps in blocking between countries by considering only
@@ -414,9 +471,9 @@ Russia have 121 and 340 blocking events in our dataset, respectively, but only
 </div>
 </div>
 
-<div id="outline-container-org4540994" class="outline-3">
-<h3 id="org4540994">Attempt 3: Overlap in content of blocked webpages</h3>
-<div class="outline-text-3" id="text-org4540994">
+<div id="outline-container-org9e4a4be" class="outline-3">
+<h3 id="org9e4a4be">Attempt 3: Overlap in content of blocked webpages</h3>
+<div class="outline-text-3" id="text-org9e4a4be">
 <p>
 Not only do the Experiment 1 and Experiment 2 methods produce minimal variation
 in the data, they also lose some important sources of variation: the themes of
@@ -429,7 +486,7 @@ measure. Two states may block different websites that are, in practical terms,
 <p>
 Here's an illustrative example: India blocks Facebook pages that advocate for
 Muslim rights, especially regarding issues around Rohingya Muslims in Myanmar
-(<a href="#citeproc_bib_item_7">Facebook.com, 2020</a>). While no other countries block Facebook pages to such
+(<a href="#citeproc_bib_item_11">Facebook.com, 2020</a>). While no other countries block Facebook pages to such
 a degree as India, other countries do block websites at the intersection of
 religion and political movements (Turkey, Saudi Arabia, Russia and more).
 </p>
@@ -439,11 +496,11 @@ Thus, we set out to measure thematic overlaps in blocked content between
 countries. Consider <code>domain1.com</code> and <code>domain2.com</code>. If they're both categorized
 as "religious," and two countries block them, we would consider this an overlap.
 While these categorizations necessarily lack granularity, it is common for
-widely-used metrics such as “press freedom” (<a href="#citeproc_bib_item_4">Borders, 2020</a>) to
+widely-used metrics such as “press freedom” (<a href="#citeproc_bib_item_6">Borders, 2020</a>) to
 categorize content at an analogous level (see Limitations for a further
 discussion on classification). In their own analysis of their toolkit, ICLab
 settled on a similar technique, and used FortiGuard's URL categories to classify
-websites' content (<a href="#citeproc_bib_item_13">Niaki <i>et al.</i>, 2020</a>).
+websites' content (<a href="#citeproc_bib_item_21">Niaki <i>et al.</i>, 2020</a>).
 </p>
 
 <p>
@@ -451,7 +508,7 @@ FortiGuard provides a “web filter” for corporations, allowing networks to bl
 (for example) pornography or gambling sites. To make this service work,
 FortiGuard maintains a URL classification service, which returns a category for
 any given URL. FortiGuard maintains 87 different classifications
-(<a href="#citeproc_bib_item_8">Fortiguard, 2020a</a>). They tailor their categorization scheme toward corporate
+(<a href="#citeproc_bib_item_12">Fortiguard, 2020a</a>). They tailor their categorization scheme toward corporate
 web policies; we return to the implications of this ontology, as well as
 alternative ontologies, in our discussion and limitations sections.
 </p>
@@ -466,7 +523,7 @@ block different numbers of sites.
 </p>
 
 <p>
-As an example, see a Figure <a href="#orgde79a60">2</a>, in which we see the relative blocking
+As an example, see a Figure <a href="#org2bde850">2</a>, in which we see the relative blocking
 activity of four countries that are all very differently situated in the
 international order. This selection of countries indicates that there is
 meaningful variation between countries in our dataset. Motivated by this
@@ -476,7 +533,7 @@ countries.
 
 
 
-<div id="orgde79a60" class="figure">
+<div id="org2bde850" class="figure">
 <p><img src="./img/4country.png" alt="4country.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Proportion of websites blocked in Turkey, Russia, India and South Korea across a subset of Fortiguard categories. (Our dataset contained 78 categories for each country; we display only a few here for demonstration). We observe that these different countries block websites of various categories in different proportions. There appears to be meaningful variation in the data across countries.</p>
@@ -498,9 +555,9 @@ and Russia&#x2014;countries which had only two domains in common in Experiment
 </div>
 </div>
 
-<div id="outline-container-orgad7e159" class="outline-2">
-<h2 id="orgad7e159">Our measure</h2>
-<div class="outline-text-2" id="text-orgad7e159">
+<div id="outline-container-org5f358c6" class="outline-2">
+<h2 id="org5f358c6">Our measure</h2>
+<div class="outline-text-2" id="text-org5f358c6">
 <div id="fig1"></div>
 <script>
   index.InteroperabilityVisualization({
@@ -521,7 +578,7 @@ and Russia&#x2014;countries which had only two domains in common in Experiment
   });
 </script>
 
-<div id="org956dc3c" class="figure">
+<div id="org5b01155" class="figure">
 <p><img src="./img/dummy.png" alt="dummy.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Force-directed graph of similarities in our dataset.</p>
@@ -531,7 +588,7 @@ and Russia&#x2014;countries which had only two domains in common in Experiment
 <p>
 First, our metric reveals a large cluster of countries that are mostly similar to
 one another. Most of the countries in our dataset, in fact, lie close together,
-forming one tight component of countries with mostly similar content blocking
+forming one tight component of countries with mostly similar website blocking
 policies.
 </p>
 
@@ -556,7 +613,7 @@ In general, our metric captures significant differences between countries
 typically considered to have “closed” Internets. For example, China and India
 stand apart from both this loose, four-country cluster. China, which is
 popularly imagined to "export" its model of the Internet to its Belt &amp; Road allies
-(<a href="#citeproc_bib_item_16">Shahbaz, 2018</a>), in fact has low similarity with such countries. It is
+(<a href="#citeproc_bib_item_26">Shahbaz, 2018</a>), in fact has low similarity with such countries. It is
 relatively unique, 90% similar to Hong Kong. Otherwise, it shares notable
 similarities only with Lichtenstein, for which <i>News and Media</i> sites comprise
 19.8% of blocked content (compared to 57.4% in China).
@@ -584,7 +641,7 @@ similarities only with Lichtenstein, for which <i>News and Media</i> sites compr
   });
 </script>
 
-<div id="orgda7f6a9" class="figure">
+<div id="orgd974f6f" class="figure">
 <p><img src="./img/dummy.png" alt="dummy.png" />
 </p>
 <p><span class="figure-number">Figure 4: </span>China's blocking patterns are relatively unique, sharing notable similarities only with Hong Kong and, to a lesser degree, with Lichtenstein.</p>
@@ -596,7 +653,7 @@ mostly similar; one large cluster dominates Internet policy by our metric's
 measure. A few websites demonstrate a moderate volume of blocking while
 retaining a degree of interoperability with this main block. Vietnam, Serbia,
 Singapore, Belize, Taiwan, Bulgaria, Ukraine and Hong Kong all surround the the
-perimeter of this main, interoperable Internet (Figure <a href="#org956dc3c">3</a>),
+perimeter of this main, interoperable Internet (Figure <a href="#org5b01155">3</a>),
 retaining moderately high similarities with countries in the center. These
 "perimeter" countries indicate important variations in our dataset, perhaps
 signaling a dual risk and opportunity of deviating from the global Internet on
@@ -616,38 +673,51 @@ domains of measurement in international relations.
 </div>
 </div>
 
-<div id="outline-container-orgd14f183" class="outline-2">
-<h2 id="orgd14f183">Comparisons to other domains</h2>
-<div class="outline-text-2" id="text-orgd14f183">
+<div id="outline-container-org8fe92aa" class="outline-2">
+<h2 id="org8fe92aa">Comparisons to other domains</h2>
+<div class="outline-text-2" id="text-org8fe92aa">
 <p>
-How does Internet governance, as measured by our metric, relate to other domains
-in international relations? In this section, we evaluate the correlation of our
-metric to existing features of the international relations: trade alliances;
-military alliances; measures of personal and press freedom; and cultural and
-historical ties. We find that our metric is associated with many of these
-features. These correlations suggest that Internet governance is not <i>sui
-generis</i>: patterns of alignment in the digital domain are roughly similar to
-those in other, more familiar domains.
+How does Internet governance, as measured by the proxy of website blocking,
+relate to other domains in international relations? In this section, we evaluate
+the correlation of our metric to existing features of the international
+relations: trade alliances; military alliances; measures of personal and press
+freedom; and cultural and historical ties. We find that our metric is associated
+with many of these features. These correlations suggest that Internet governance
+decisions, at least as they relate to website blocking, are not <i>sui generis</i>:
+patterns of alignment in the digital domain are roughly similar to those in
+other, more familiar domains.
 </p>
 </div>
 
-<div id="outline-container-orgeca41e2" class="outline-3">
-<h3 id="orgeca41e2">Trade alliances: European Union (EU)</h3>
-<div class="outline-text-3" id="text-orgeca41e2">
+<div id="outline-container-org2522b36" class="outline-3">
+<h3 id="org2522b36">Trade alliances: European Union (EU)</h3>
+<div class="outline-text-3" id="text-org2522b36">
 <p>
-<a id="org9e6551b"></a>
+<a id="org5677b70"></a>
 </p>
 
 <p>
-The Internet is often described as both a cause and an effect of trade. As a
-cause, the Internet enables trade; countries have an incentive to converge on
-Internet governance policies, as doing so will lower trade barriers. As an
-effect, high levels of trade between two countries create interdependence
-between economies. This interdependence would become more expensive to sustain
-if Internet policies between these two countries were highly discrepant; thus,
-Internet governance policies converge. While real causal relationships are
-likely mixed, both causal pathways give us reason to suspect that trade
-relationships might correlate with shared Internet blocking policies.
+The flow of information has long been analyzed from an international trade
+perspective. Debates over the row of information flows in international trade
+were a primary subject of the Uruguay round of the General Agreement on Tariffs
+and Trade (GATT) beginning 1986, negotiations that ultimately produced the World
+Trade Organization (WTO) (<a href="#citeproc_bib_item_14">Gallagher, 2005</a>). Despite the primacy of these
+debates, existing metrics struggle to capture specific barriers to international
+data flows, making their effect on trade (and trade's effect on these barriers)
+difficult to quantify.
+</p>
+
+<p>
+International data flows are often described as both a cause and an effect of
+trade (<a href="#citeproc_bib_item_18">Meltzer, 2015</a>). As a cause, the Internet enables trade; countries
+have an incentive to converge on Internet governance policies, as doing so will
+lower trade barriers. As an effect, high levels of trade between two countries
+create interdependence between economies. This interdependence would become more
+expensive to sustain if Internet policies between these two countries were
+highly discrepant; thus, Internet governance policies converge. While real
+causal relationships are likely mixed, both causal pathways give us reason to
+suspect that trade relationships might correlate with shared Internet blocking
+policies.
 </p>
 
 <p>
@@ -671,9 +741,9 @@ p = 0.41).
 </p>
 </div>
 
-<div id="outline-container-org99ac6aa" class="outline-4">
-<h4 id="org99ac6aa">Takeaways</h4>
-<div class="outline-text-4" id="text-org99ac6aa">
+<div id="outline-container-org5a1ddc8" class="outline-4">
+<h4 id="org5a1ddc8">Takeaways</h4>
+<div class="outline-text-4" id="text-org5a1ddc8">
 <p>
 We find that EU countries are overall more similar to one another than they are
 to the rest of the world. There are a few possible explanations for this
@@ -700,13 +770,13 @@ the "legacy of communism" arguments from the 1990s, which argued that
 newly-liberated former Warsaw Pact countries would carry institutional and
 cultural legacies from that past into their future political and economic
 alignments and practices in a a kind of political hysteresis
-(<a href="#citeproc_bib_item_14">Nodia, 2000</a>; <a href="#citeproc_bib_item_15">Rose, 1998</a>) is not visible in the digital layer.
+(<a href="#citeproc_bib_item_22">Nodia, 2000</a>; <a href="#citeproc_bib_item_24">Rose, 1998</a>) is not visible in the digital layer.
 </p>
 
 
 <p>
 Future work could also explore aspects of global trade outside of formal
-agreements. Non-tariff barriers to trade (<a href="#citeproc_bib_item_6">Evenett, 2019</a>) present
+agreements. Non-tariff barriers to trade (<a href="#citeproc_bib_item_10">Evenett, 2019</a>) present
 one potential avenue. We would expect to find an inverse correlation between
 non-tariff barriers and our metric: two countries more open to trade should have
 similar blocking profiles.
@@ -715,16 +785,16 @@ similar blocking profiles.
 </div>
 </div>
 
-<div id="outline-container-orgb4bc2db" class="outline-3">
-<h3 id="orgb4bc2db">Military alliances</h3>
-<div class="outline-text-3" id="text-orgb4bc2db">
+<div id="outline-container-org3448708" class="outline-3">
+<h3 id="org3448708">Military alliances</h3>
+<div class="outline-text-3" id="text-org3448708">
 <p>
 Increasing concern about “cyberwar” makes it plain that many see the Internet as
 a key tool in military conflict. However, military alliances signal policy
 overlap even if no one fires a bullet. Military alliances signal that one
 country would be willing to fight for another; alliance signals a willingness to
 sacrifice a great deal for another actor, which in turn suggests policy
-alignment (<a href="#citeproc_bib_item_5">De Mesquita, 1983</a>).
+alignment (<a href="#citeproc_bib_item_9">De Mesquita, 1983</a>).
 </p>
 
 <p>
@@ -754,9 +824,9 @@ significance (U=814, p=0.084).
 </div>
 
 
-<div id="outline-container-org007b3de" class="outline-4">
-<h4 id="org007b3de">Takeaways</h4>
-<div class="outline-text-4" id="text-org007b3de">
+<div id="outline-container-org1b275ec" class="outline-4">
+<h4 id="org1b275ec">Takeaways</h4>
+<div class="outline-text-4" id="text-org1b275ec">
 <p>
 NATO countries are significantly more similar to one another in Internet
 blocking patterns than they are to non-NATO countries. It is interesting to note
@@ -785,11 +855,11 @@ less coherent, less institutionally robust alliance than is NATO
 </div>
 </div>
 
-<div id="outline-container-org751abbe" class="outline-3">
-<h3 id="org751abbe">Personal and press freedom</h3>
-<div class="outline-text-3" id="text-org751abbe">
+<div id="outline-container-orga98204e" class="outline-3">
+<h3 id="orga98204e">Personal and press freedom</h3>
+<div class="outline-text-3" id="text-orga98204e">
 <p>
-Reporters Without Borders’ World Press Freedom Index (<a href="#citeproc_bib_item_4">Borders, 2020</a>) quantifies the degree of
+Reporters Without Borders’ World Press Freedom Index (<a href="#citeproc_bib_item_6">Borders, 2020</a>) quantifies the degree of
 freedom available to journalists in 180 countries. We find a moderate positive
 correlation between blocking similarity and media freedom rank, r(1483) = 0.38,
 p&lt;0.001. Countries more similar to one another in press freedom ranking are also
@@ -797,7 +867,7 @@ more similar to one another in Internet blocking patterns.
 </p>
 
 <p>
-Freedom House’s Freedom in the World Index (<a href="#citeproc_bib_item_10">House, 2020</a>) quantifies the
+Freedom House’s Freedom in the World Index (<a href="#citeproc_bib_item_16">House, 2020</a>) quantifies the
 freedom of electoral processes, political participation, functioning of
 government, freedom of expression and association, rule of law, and personal
 autonomy around the world. We find a moderate positive correlation between
@@ -808,9 +878,9 @@ r(156) = 0.85, p&lt;0.001.
 </p>
 </div>
 
-<div id="outline-container-orgc159cf4" class="outline-4">
-<h4 id="orgc159cf4">Takeaways</h4>
-<div class="outline-text-4" id="text-orgc159cf4">
+<div id="outline-container-org64a421d" class="outline-4">
+<h4 id="org64a421d">Takeaways</h4>
+<div class="outline-text-4" id="text-org64a421d">
 <p>
 The presence of a positive correlation between blocking similarities implies
 that changes to our Internet blocking metric could predict changes to press
@@ -837,16 +907,16 @@ potentially to a more fine-grained metric of website blocking.
 </div>
 </div>
 
-<div id="outline-container-orgfd8abde" class="outline-3">
-<h3 id="orgfd8abde">Cultural and historical ties: Commonwealth countries</h3>
-<div class="outline-text-3" id="text-orgfd8abde">
+<div id="outline-container-orgbb02d55" class="outline-3">
+<h3 id="orgbb02d55">Cultural and historical ties: Commonwealth countries</h3>
+<div class="outline-text-3" id="text-orgbb02d55">
 <p>
-<a id="org4a73201"></a>
+<a id="orgf63abdb"></a>
 </p>
 
 <p>
 The correlations we have discussed so far have been suggestive of ties between
-Internet governance policy and other domains, such as press freedom, trade and
+website blocking policy and other domains, such as press freedom, trade and
 military alliance. However, in all cases, our findings are confounded somewhat
 by shared cultural history. Along with their trade alliance, countries in the EU
 share many legal, cultural and historical similarities. The same is true of NATO
@@ -854,7 +924,7 @@ members and, to a degree, of countries with high press freedom.
 </p>
 
 <p>
-To what degree can Internet governance policies be explained by cultural
+To what degree can webite blocking policies be explained by cultural
 relationships&#x2014;shared legal precedent and cultural norms? To examine this
 question, we analyzed Commonwealth countries, an association of 54 member
 states, nearly all former territories of the British Empire. This association
@@ -877,9 +947,9 @@ outside-Commonwealth (M=0.89) group (U=9922, p=0.59).
 </p>
 </div>
 
-<div id="outline-container-org53b893c" class="outline-4">
-<h4 id="org53b893c">Takeaways</h4>
-<div class="outline-text-4" id="text-org53b893c">
+<div id="outline-container-org776f7ab" class="outline-4">
+<h4 id="org776f7ab">Takeaways</h4>
+<div class="outline-text-4" id="text-org776f7ab">
 <p>
 Our finding implies that Commonwealth heritage is not reflected in website
 blocking. This throws into question the degree to which our previous
@@ -901,13 +971,13 @@ legal similarities may explain variance in Internet blocking patterns.
 </div>
 </div>
 
-<div id="outline-container-orgb595227" class="outline-2">
-<h2 id="orgb595227">Conclusion</h2>
-<div class="outline-text-2" id="text-orgb595227">
+<div id="outline-container-org57b7cda" class="outline-2">
+<h2 id="org57b7cda">Conclusion</h2>
+<div class="outline-text-2" id="text-org57b7cda">
 <p>
-This work presents Internet blocking as a metric of policy alignment. It
-represents policy in a domain not well-studied by other metrics of alignment:
-the realm of Internet governance.
+This work presents Internet blocking as a metric of policy alignment. It begins
+to represent policy in a domain not well-studied by other metrics of alignment:
+Internet governance.
 </p>
 
 <p>
@@ -923,7 +993,7 @@ and vice versa.
 <p>
 At the same time, our work demonstrates the value and relevance of Internet
 fragmentation to policymakers. Internet fragmentation is not simply a technical
-issue. Internet fragmentation, at least as measured by content blocking, appears
+issue. Internet fragmentation, at least as measured by website blocking, appears
 to be entangled with other aspects of the global order.
 </p>
 
@@ -931,7 +1001,7 @@ to be entangled with other aspects of the global order.
 As such, future work could attempt to assess the usefulness of this metric as a
 “leading indicator” of changes to international relations. Unlike other metrics
 of global trade, military alliance, or civil rights, we can measure Internet
-blocking continuously. As one country converges with others on content blocking
+blocking continuously. As one country converges with others on website blocking
 patterns, we would expect those countries to be more likely to, for example,
 join a trade pact in the future. To name an example timely as of the time of
 this writing, imagine that the United States blocks the Chinese apps WeChat and
@@ -949,16 +1019,16 @@ relations globally.
 
 <p>
 In the future, we aim to develop our tool to be more comprehensive, covering
-multiple layers of the TCP/IP stack (Table <a href="#org7a7720f">1</a>). This metric, which
-covers content blocking alone, focuses on the "application" layer of DNS and
+multiple layers of the TCP/IP stack (Table <a href="#orgef0221d">1</a>). This metric, which
+covers website blocking alone, focuses on the "application" layer of DNS and
 HTTP. Our future work could explore fragmentation "lower down" the stack (e.g.,
 at the protocol layer, where a transition from IPv4 to IPv6 plays out unevenly
 around the globe). Future work could also explore fragmentation "higher up" the
 stack, looking at laws that limit data flow or enforce Internet sovereignty
-(<a href="#citeproc_bib_item_3">Bejtlich <i>et al.</i>, 2015</a>).
+(<a href="#citeproc_bib_item_5">Bejtlich <i>et al.</i>, 2015</a>).
 </p>
 
-<table id="org7a7720f" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgef0221d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-bottom"><span class="table-number">Table 1:</span> A "layer" model of the Internet, with possible metrics for each layer. The work we present here only covers Layer 4.</caption>
 
 <colgroup>
@@ -1013,7 +1083,7 @@ stack, looking at laws that limit data flow or enforce Internet sovereignty
 <p>
 We also aim to collect data more frequently, updating our metric as continuously
 as possible (and archiving prior metrics). The Open Observatory of Network
-Interference (OONI) (<a href="#citeproc_bib_item_12">Network Interference (OONI), 2020</a>) collects Internet measurements continuously, including data
+Interference (OONI) (<a href="#citeproc_bib_item_20">Network Interference (OONI), 2020</a>) collects Internet measurements continuously, including data
 about website blocking. These terabytes of data, collected second-to-second,
 could be used to detect sudden changes in blocking patterns. These changes could
 themselves act as harbingers of changes to the international order.
@@ -1021,9 +1091,9 @@ themselves act as harbingers of changes to the international order.
 </div>
 </div>
 
-<div id="outline-container-orgd7a5435" class="outline-2">
-<h2 id="orgd7a5435">Appendix</h2>
-<div class="outline-text-2" id="text-orgd7a5435">
+<div id="outline-container-org4d279dd" class="outline-2">
+<h2 id="org4d279dd">Appendix</h2>
+<div class="outline-text-2" id="text-org4d279dd">
 <div id="fig3"></div>
 <script>
   index.InteroperabilityVisualization({
@@ -1048,17 +1118,17 @@ themselves act as harbingers of changes to the international order.
 </script>
 </div>
 
-<div id="outline-container-org07fc618" class="outline-3">
-<h3 id="org07fc618">Data, code and visualization</h3>
-<div class="outline-text-3" id="text-org07fc618">
+<div id="outline-container-org50e8c6e" class="outline-3">
+<h3 id="org50e8c6e">Data, code and visualization</h3>
+<div class="outline-text-3" id="text-org50e8c6e">
 <p>
 Our metric, and the code used to generate it, are <a href="https://github.com/daylight-lab/website-blocking-proxy">available via GitHub</a>. The code that powers our interactive visualizations are also <a href="https://github.com/lilybhattacharjee5/interoperability-demo">accessible via GitHub</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-org79d65bf" class="outline-3">
-<h3 id="org79d65bf">Data cleaning</h3>
-<div class="outline-text-3" id="text-org79d65bf">
+<div id="outline-container-orgb016ebc" class="outline-3">
+<h3 id="orgb016ebc">Data cleaning</h3>
+<div class="outline-text-3" id="text-orgb016ebc">
 <p>
 We had 12 datasets (.csv files) ranging from January 2017 to September 2018 which
 amounted to a total of 50,436,865 observations. Each observation represents a
@@ -1086,13 +1156,13 @@ with 78 categories of website blocking across 55 countries.
 </div>
 </div>
 
-<div id="outline-container-org51ceee5" class="outline-3">
-<h3 id="org51ceee5">Limitations</h3>
-<div class="outline-text-3" id="text-org51ceee5">
+<div id="outline-container-org0816468" class="outline-3">
+<h3 id="org0816468">Limitations</h3>
+<div class="outline-text-3" id="text-org0816468">
 </div>
-<div id="outline-container-orgb50cfa5" class="outline-4">
-<h4 id="orgb50cfa5">ICLab data</h4>
-<div class="outline-text-4" id="text-orgb50cfa5">
+<div id="outline-container-org5d2532c" class="outline-4">
+<h4 id="org5d2532c">ICLab data</h4>
+<div class="outline-text-4" id="text-org5d2532c">
 <p>
 While ICLab does a good job at detecting when a website is blocked, there are a
 few limitations that hinder our ability to reliably decide if a given webpage is
@@ -1109,7 +1179,7 @@ it really is not.
 Second, while the United States does not block websites by interfering with
 network traffic, the United States does use its legal system to seize websites
 that violate US law. One prolific effort is Operation In Our Sites, managed by
-Immigration and Customs Enforcement (ICE). (<a href="#citeproc_bib_item_11">Kopel, 2013</a>). While this
+Immigration and Customs Enforcement (ICE). (<a href="#citeproc_bib_item_17">Kopel, 2013</a>). While this
 activity does constitute Internet censorship, it does not cause Internet
 fragmentation <i>per se</i>, as seized websites become equally unavailable worldwide.
 Future work should monitor US website seizing operations more closely.
@@ -1153,6 +1223,15 @@ could resolve some of this ambiguity.
 </p>
 
 <p>
+Eighth, governments may tailor their blocking strategies to particular users.
+ICLab's method of vantage points is unlikely to capture this sort of blocking;
+detecting personalized censorship would require end-users to install and run
+tests themselves. Of course, having end users request sensitive websites, even
+automatically, could put them at great personal risk. Those possibilities could
+be the subject of future work.
+</p>
+
+<p>
 Finally, a more fundamental issue with ICLab data is that the blocking events in
 this dataset do not necessarily relate to government action. Individual
 websites, such as Netflix, can choose to block traffic originating from
@@ -1164,16 +1243,16 @@ countries.
 </div>
 </div>
 
-<div id="outline-container-org4e7baa6" class="outline-4">
-<h4 id="org4e7baa6">Content categorization</h4>
-<div class="outline-text-4" id="text-org4e7baa6">
+<div id="outline-container-org3d45d56" class="outline-4">
+<h4 id="org3d45d56">Content categorization</h4>
+<div class="outline-text-4" id="text-org3d45d56">
 <p>
 FortiGuard does not capture the fine-grained thematic content of a website.
 FortiGuard classifies the Facebook BlackLivesMatter group as "social
-networking," (<a href="#citeproc_bib_item_9">Fortiguard, 2020b</a>) indicating that FortiGuard does not capture the subject matter of
+networking," (<a href="#citeproc_bib_item_13">Fortiguard, 2020b</a>) indicating that FortiGuard does not capture the subject matter of
 particular Facebook pages. FortiGuard’s bases their 87 categories on the user
 needs of their “three major groups of customers: enterprises, schools and
-homes/families” (<a href="#citeproc_bib_item_8">Fortiguard, 2020a</a>). It is unclear that these categories are a perfect fit for
+homes/families” (<a href="#citeproc_bib_item_12">Fortiguard, 2020a</a>). It is unclear that these categories are a perfect fit for
 our usecase of measuring or detecting policies behind website blocking
 decisions.
 </p>
@@ -1203,9 +1282,9 @@ a proxy for policy.
 </div>
 </div>
 
-<div id="outline-container-org5adf54e" class="outline-4">
-<h4 id="org5adf54e">False negatives</h4>
-<div class="outline-text-4" id="text-org5adf54e">
+<div id="outline-container-orgc0d2d23" class="outline-4">
+<h4 id="orgc0d2d23">False negatives</h4>
+<div class="outline-text-4" id="text-orgc0d2d23">
 <p>
 One epistemic issue in our dataset is possible false negatives. As an example of
 when this issue might crop up, consider China and India. China and india both
@@ -1223,9 +1302,9 @@ within apps then with specific URLs.
 </div>
 </div>
 
-<div id="outline-container-orgcb7427e" class="outline-2">
-<h2 id="orgcb7427e">About the authors</h2>
-<div class="outline-text-2" id="text-orgcb7427e">
+<div id="outline-container-org3c11fe4" class="outline-2">
+<h2 id="org3c11fe4">About the authors</h2>
+<div class="outline-text-2" id="text-org3c11fe4">
 <p>
 <b>Nick Merrill</b> directs the Daylight Lab at the UC Berkeley Center for Long-Term Cybersecurity.
 </p>
@@ -1245,9 +1324,9 @@ E-mail: steven_weber at berkeley dot edu
 </div>
 </div>
 
-<div id="outline-container-org8b9c845" class="outline-2">
-<h2 id="org8b9c845">Acknowledgements</h2>
-<div class="outline-text-2" id="text-org8b9c845">
+<div id="outline-container-orgca6729e" class="outline-2">
+<h2 id="orgca6729e">Acknowledgements</h2>
+<div class="outline-text-2" id="text-orgca6729e">
 <p>
 We would like to thank Akhilesh Pandita for his data analysis and Lily
 Bhattacharjee for her work on the data visualization.
@@ -1259,21 +1338,31 @@ Bhattacharjee for her work on the data visualization.
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><h2 class='citeproc-org-bib-h2'>Bibliography</h2>
 <div class="csl-bib-body">
   <div class="csl-entry"><a name="citeproc_bib_item_1"></a>Amitav Acharya, 2014. <i>Constructing a security community in Southeast Asia: ASEAN and the problem of regional order</i>, Routledge.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_2"></a>Michael A Bailey, Anton Strezhnev and Erik Voeten, 2017. “Estimating dynamic state preferences from United Nations voting data,” <i>Journal of Conflict Resolution</i>, volume 61, number 2, pp. 430–456.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_3"></a>Richard Bejtlich, Kenneth Geers and Russian Aggression against Ukraine, 2015. “Strategic defence in cyberspace: beyond tools and tactics,” <i>Cyber War in Perspective: Russian Aggression against Ukraine. Kenneth Geers, Tallinn</i>, pp. 159–170.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_4"></a>Reporters Without Borders, 2020. “2020 Freedom of the Press Rankings,” at <a href="https://rsf.org/en/ranking">https://rsf.org/en/ranking</a>.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_5"></a>Bruce Bueno De Mesquita, 1983. <i>The War Trap</i>, Yale University Press.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_6"></a>Simon J Evenett, 2019. “Protectionism, state discrimination, and international business since the onset of the Global Financial Crisis,” <i>Journal of International Business Policy</i>, volume 2, number 1, pp. 9–36.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_7"></a>Facebook.com, 2020. “Plz Save All Muslims in Burma,” at <a href="https://wvww.facebook.com/plzsaveallmuslimlnburma">https://wvww.facebook.com/plzsaveallmuslimlnburma</a>.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_8"></a>Fortiguard, 2020a. “Fortiguard Webfilter Categories,” at <a href="https://www.fortiguard.com/webfilter/categories">https://www.fortiguard.com/webfilter/categories</a>.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_9"></a>Fortiguard, 2020b. “Web Filter Lookup: www.facebook.com/BlackLivesMatter,” at <a href="https://www.fortiguard.com/webfilter?q=https://www.facebook.com/BlackLivesMatter/&#38;version=8">https://www.fortiguard.com/webfilter?q=https://www.facebook.com/BlackLivesMatter/&#38;version=8</a>.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_10"></a>Freedom House, 2020. “Freedom in the World,” at <a href="https://freedomhouse.org/report/freedom-world">https://freedomhouse.org/report/freedom-world</a>.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_11"></a>Karen Kopel, 2013. “Operation Seizing Our Sites: How the Federal Government is taking domain names without prior notice,” <i>Berkeley Tech. LJ</i>, volume 28, p. 859.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_12"></a>Open Observatory of Network Interference (OONI), 2020. “Open Observatory of Network Interference,” at <a href="https://ooni.org/">https://ooni.org/</a>.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_13"></a>Arian Akhavan Niaki, Shinyoung Cho, Zachary Weinberg, Nguyen Phong Hoang, Abbas Razaghpanah, Nicolas Christin and Phillipa Gill, 2020. “IClab: a global, longitudinal internet censorship measurement platform,” In: <i>2020 IEEE Symposium on Security and Privacy (SP)</i>, IEEE, pp. 135–151.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_14"></a>Ghia Nodia, 2000. “Chasing the Meaning of “Post-communism’: a Transitional Phenomenon or Something to Stay?,” <i>Contemporary European History</i>, number 2, pp. 269–283.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_15"></a>Richard Rose, 1998. “Prospects for democracy in postcommunist Europe,” In: <i>Developments in Central and East European Politics 2</i>, Springer, pp. 276–295.</div>
-  <div class="csl-entry"><a name="citeproc_bib_item_16"></a>Adrian Shahbaz, 2018. “The Rise of Digital Authoritarianism,” at <a href="https://freedomhouse.org/report/freedom-net/2018/rise-digital-authoritarianism">https://freedomhouse.org/report/freedom-net/2018/rise-digital-authoritarianism</a>.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_2"></a>Shazeda Ahmed and Steven Weber, 2018. “China’s long game in techno-nationalism,” <i>First Monday</i>.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_3"></a>Michael A Bailey, Anton Strezhnev and Erik Voeten, 2017. “Estimating dynamic state preferences from United Nations voting data,” <i>Journal of Conflict Resolution</i>, volume 61, number 2, pp. 430–456.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_4"></a>David Bamman, Brendan O’Connor and Noah Smith, 2012. “Censorship and deletion practices in Chinese social media,” <i>First Monday</i>.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_5"></a>Richard Bejtlich, Kenneth Geers and Russian Aggression against Ukraine, 2015. “Strategic defence in cyberspace: beyond tools and tactics,” <i>Cyber War in Perspective: Russian Aggression against Ukraine. Kenneth Geers, Tallinn</i>, pp. 159–170.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_6"></a>Reporters Without Borders, 2020. “2020 Freedom of the Press Rankings,” at <a href="https://rsf.org/en/ranking">https://rsf.org/en/ranking</a>.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_7"></a>Sam Byford, 2020. “TikTok says the Trump administration has forgotten about trying to ban it, would like to know what’s up,” at <a href="https://www.theverge.com/2020/11/10/21559677/tiktok-cfius-court-petition-ban-deadline">https://www.theverge.com/2020/11/10/21559677/tiktok-cfius-court-petition-ban-deadline</a>.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_8"></a>Nazli Choucri and David D Clark, 2018. <i>International relations in the cyber age: The co-evolution dilemma</i>, Information Policy.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_9"></a>Bruce Bueno De Mesquita, 1983. <i>The War Trap</i>, Yale University Press.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_10"></a>Simon J Evenett, 2019. “Protectionism, state discrimination, and international business since the onset of the Global Financial Crisis,” <i>Journal of International Business Policy</i>, volume 2, number 1, pp. 9–36.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_11"></a>Facebook.com, 2020. “Plz Save All Muslims in Burma,” at <a href="https://wvww.facebook.com/plzsaveallmuslimlnburma">https://wvww.facebook.com/plzsaveallmuslimlnburma</a>.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_12"></a>Fortiguard, 2020a. “Fortiguard Webfilter Categories,” at <a href="https://www.fortiguard.com/webfilter/categories">https://www.fortiguard.com/webfilter/categories</a>.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_13"></a>Fortiguard, 2020b. “Web Filter Lookup: www.facebook.com/BlackLivesMatter,” at <a href="https://www.fortiguard.com/webfilter?q=https://www.facebook.com/BlackLivesMatter/&#38;version=8">https://www.fortiguard.com/webfilter?q=https://www.facebook.com/BlackLivesMatter/&#38;version=8</a>.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_14"></a>Peter Gallagher, 2005. <i>The first ten years of the WTO: 1995-2005</i>, Cambridge University Press.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_15"></a>Jeanette Hofmann, Christian Katzenbach and Kirsten Gollatz, 2017. “Between coordination and regulation: Finding the governance in Internet governance,” <i>New Media &#38; Society</i>, volume 19, number 9, pp. 1406–1423.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_16"></a>Freedom House, 2020. “Freedom in the World,” at <a href="https://freedomhouse.org/report/freedom-world">https://freedomhouse.org/report/freedom-world</a>.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_17"></a>Karen Kopel, 2013. “Operation Seizing Our Sites: How the Federal Government is taking domain names without prior notice,” <i>Berkeley Tech. LJ</i>, volume 28, p. 859.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_18"></a>Joshua Paul Meltzer, 2015. “The I nternet, Cross-Border Data Flows and International Trade,” <i>Asia &#38; the Pacific Policy Studies</i>, volume 2, number 1, pp. 90–102.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_19"></a>Aimée Hope Morrison, 2009. “An impossible future: John Perry Barlow’s’ Declaration of the Independence of Cyberspace’,” <i>New Media &#38; Society</i>, volume 11, numbers 1-2, pp. 53–71.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_20"></a>Open Observatory of Network Interference (OONI), 2020. “Open Observatory of Network Interference,” at <a href="https://ooni.org/">https://ooni.org/</a>.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_21"></a>Arian Akhavan Niaki, Shinyoung Cho, Zachary Weinberg, Nguyen Phong Hoang, Abbas Razaghpanah, Nicolas Christin and Phillipa Gill, 2020. “IClab: a global, longitudinal internet censorship measurement platform,” In: <i>2020 IEEE Symposium on Security and Privacy (SP)</i>, IEEE, pp. 135–151.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_22"></a>Ghia Nodia, 2000. “Chasing the Meaning of “Post-communism’: a Transitional Phenomenon or Something to Stay?,” <i>Contemporary European History</i>, number 2, pp. 269–283.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_23"></a>James N Rosenau and Jaswinder P Singh, 2002. <i>Information technologies and global politics: The changing scope of power and governance</i>, SUNY Press.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_24"></a>Richard Rose, 1998. “Prospects for democracy in postcommunist Europe,” In: <i>Developments in Central and East European Politics 2</i>, Springer, pp. 276–295.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_25"></a>Adam Satariano, 2020. “Amazon Charged With Antitrust Violations by European Regulators,” at <a href="https://www.nytimes.com/2020/11/10/business/amazon-eu-antitrust.html">https://www.nytimes.com/2020/11/10/business/amazon-eu-antitrust.html</a>.</div>
+  <div class="csl-entry"><a name="citeproc_bib_item_26"></a>Adrian Shahbaz, 2018. “The Rise of Digital Authoritarianism,” at <a href="https://freedomhouse.org/report/freedom-net/2018/rise-digital-authoritarianism">https://freedomhouse.org/report/freedom-net/2018/rise-digital-authoritarianism</a>.</div>
 </div>
 </div>
 </div>
@@ -1281,7 +1370,7 @@ Bhattacharjee for her work on the data visualization.
 <div id="postamble" class="status">
 <p class="date">Date: 2020-08-11 Tue 00:00</p>
 <p class="author">Author: Nick Merrill</p>
-<p class="date">Created: 2020-09-28 Mon 08:49</p>
+<p class="date">Created: 2020-11-18 Wed 10:00</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

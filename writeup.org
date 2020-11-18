@@ -12,26 +12,52 @@ by Nick Merrill and Steve Weber
 
 * Abstract
 
-This work introduces a new proxy measure of policy alignment between states:
-website blocking. This measure speaks to the information flow in the digital
-layer of international politics, a new element to international trade and
-cooperation, and one which existing metrics fail to capture. In addition, our
-measure can be constantly scraped and updated, offering a higher temporal
-resolution than existing metrics. Our work suggests a link between Internet
-governance and other issues in international relations. Since we can capture our
-metric in real time, we can use changes in our metric to detect possible changes
-in international relations faster than would otherwise be possible.
+This work introduces a new metric of policy alignment between states: website
+blocking. Intuitively, we measure the degree to which states block similar
+content. This metric speaks to the flow of information in the digital layer of
+international politics, an element of international trade and cooperation that
+existing metrics fail to capture. In addition, our measure can be constantly
+scraped and updated, offering a higher temporal resolution than existing
+metrics. Our work suggests a link between Internet governance and other issues
+in international relations (e.g., trade). Since our metric can be updated in
+real time, future work could use our metric to detect geopolitical shifts more
+rapidly than would otherwise be possible.
 
 * Introduction
 
 In international politics and political economy, the primitive unit of analysis
-is frequently the /state/. One of the important observations is how and when
-states “align” with each other. Do they support each other when it comes to
-conflict with a third party? Do they trade more than one would expect (e.g.,
-from gravity models)? Since formal trade agreements (e.g., European Union) and
-formal alliances (e.g., NATO) only capture certain aspects of states’ alignment,
-researchers have looked for other measures of policy alignment to fill in the
-gaps.
+is frequently the /state/. Early in the 1990s, popular rhetoric imagined that
+the Internet posed an intrinsic, perhaps even an insurmountable challenge to the
+power of states cite:morrison2009impossible. While the Internet has indeed challenged
+states to reconsider particular strategic aims (e.g., knowledge production,
+identity formation) cite:rosenau2002information, it is is increasingly
+evident as of this writing that the Internet has proven equally valuable as a
+vector for states to /exert/ their power.
+
+Today, cyberspace is a matter of "high politics;" it is a domain in which
+conflicts central to states' security play out.
+[[cite:choucri2018international][p.4]]. How do states exert power in this domain?
+Broadly, institutions mediate and organize the Internet through
+various institutions: ISPs, regulators, and standards-setting bodies, not to
+mention corporations and end-users under legal jurisdiction. States use these
+institutions and jurisdictions to exert strategic control over the Internet. For
+example, China's government uses a multitude of technical decision-making bodies
+to gain long-term political and economic advantages
+cite:ahmed2018china,bamman2012censorship. The EU has used antitrust charges to
+check US-based Internet businesses cite:eu-google. More recently, the US has
+flirted with putting Chinese mobile phone apps under US juridiction, vaguely
+citing national security concerns cite:tiktok.
+
+
+
+In this work, we seek to understand how conflict and cooperation plays out in
+cyberspace using the notion of /policy alignment/. One of the important
+observations is how and when states “align” with each other. Do they support
+each other when it comes to conflict with a third party? Do they trade more than
+one would expect (e.g., from gravity models)? Since formal trade agreements
+(e.g., European Union) and formal alliances (e.g., NATO) only capture certain
+aspects of states’ alignment, researchers have looked for other measures of
+policy alignment to fill in the gaps.
 
 #+CAPTION: Different metrics of policy alignment create connected graphs of countries. Our project adds a new topic area: the Internet.
 #+LABEL: fig:proxies
@@ -60,49 +86,72 @@ support each other in a conflict with a third party, for example, than two
 countries with low policy alignment cite:de1983war.
 
 
-** Webpage blocking as a metric of policy alignment
+** Website blocking as a metric of policy alignment
 
-Currently, no metric of policy alignment measures Internet governance. Internet
-governance refers to the policies that shape the Internet in any given country.
-The Internet is a relatively new domain of International policy competition, as
-well as a new domain in which trade, cooperation and conflict all take place. In
-addition, we can collect data on our metric continuously, allowing us to detect
-changes in policy alignment much more quickly than other metrics can afford.
+The Internet has emerged as a key domain of conflict and cooperation between
+states. The way states (and other actors) govern in this shared domain is widely
+referred to as Internet governance. However, in its specifics, the term
+"Internet governance" has taken on a wide range of definitions. For our
+analysis, we follow cite:hofmann2017between, defining Internet governance as a
+"continuous heterogeneous process of ordering" the Internet, making room for
+both formal rule-making and emergent practices of users, providers and other
+stakeholders.
 
-One critical component of Internet governance is webpage blocking. Website
-blocking, typically enacted directly by governments, makes a particular URL
-unavailable in a particular country. In different countries, different sets of
-websites are unavailable, either by redirecting the website request, or simply
-dropping the request or its response. While the technical means for blocking
-websites are diverse (discussed below), the end result is that a user cannot
-access a webpage.
+Measuring policy alignment in this domain is critical in understanding how
+exactly this conflict and cooperation plays out over time. However, no metric of
+policy alignment currently measures Internet governance across states. Given the
+heterogeneity of specific activities that constitute Internet governance
+cite:hofmann2017between, doing so with a single metric would likely elide some
+richness.
 
-In this project, we use similarities in webpage blocking patterns to build a
-metric of policy alignment on Internet governance. If two countries block the
-similar content (more on what "similar" means later), we consider this alignment
-a proxy of policy alignment on Internet governance issues. They may not have
-conferred, but their blocking decision reveals a shared outlook or set of
+In this paper, we take an initial step toward measuring policy alignment in
+Internet governance by focusing specifically on webpage blocking. Broadly,
+website makes a particular URL unavailable in a particular country. In different
+countries, different sets of websites are unavailable, either by redirecting the
+website request, or simply dropping the request or its response. While the
+technical means for blocking websites are diverse (discussed below), the end
+result is that a user cannot access a webpage. Website blocking is typically
+enacted directly by governments, making it a fruitful first step toward
+quantifying alignment in the Internet governance policies of states
+specifically.
+
+We set out to use similarities in webpage blocking patterns to build a metric of
+policy alignment. If two countries block the similar content (more on what
+"similar" means later), we consider this alignment a /proxy/ of policy alignment
+on Internet governance issues. These states may not have conferred with one
+another, but their blocking decision reveals a shared outlook or set of
 geopolitical goals.
 
 * Methods
 
-From a technical standpoint, there are a variety of methods for blocking webpages. One
-option is to manipulate domain name system (DNS) messages in order to make
-websites appear unresolvable. Another option is to drop TCP handshake packages
-with particular destination IPs, effectively making IP addresses impossible to
-contact. A related option is to allow the TCP handshake to occur, but inject
-follow-up TCP packets that either break or supersede the legitimate response.
-Yet another option is to make a legal case to a particular service provider (for
-example, asking Facebook to block a page in a particular country).
+From a technical standpoint, there are a variety of methods for blocking
+webpages. One option is to manipulate domain name system (DNS) messages in order
+to make websites appear unresolvable. Another option is to drop TCP handshake
+packages with particular destination IPs, effectively making IP addresses
+impossible to contact. A related option is to allow the TCP handshake to occur,
+but inject follow-up TCP packets that either break or supersede the legitimate
+response. Yet another option is to make a legal case to a particular service
+provider (for example, asking Facebook to block a page in a particular country).
+Governments may also pressure ISPs to shut down service for particular users, or
+shut down service altogether.
 
 ICLab, a longitudinal corpus of website blocking events, seeks to deal with this
-diversity in blocking strategies cite:niaki2020iclab. It focuses on consistency in blocking
-measurements across countries and over time. As of this writing, the ICLab has
-collected twelve datasets ranging from January, 2017 to September, 2018. In this
-paper, we use the ICLab dataset to produce a metric of policy alignment with
-respect to Internet governance. We report on three attempts to use this dataset
-to do so. (Note that, before each of these experiments, we cleaned and
-pre-processed the data. See Appendix for details.).
+diversity in blocking strategies cite:niaki2020iclab. It focuses on consistency
+in blocking measurements across countries and over time. As of this writing, the
+ICLab has collected twelve snapshots of blocking activity from January 2017 to
+September 2018. ICLab produced these snapshots by placing "vantage points," or
+Internet-connected devices, in countries around the world. The vantage points
+made an HTTP request to each URL from a predefined list. The responses that came
+back were stored and analyzed by the ICLab team to determine whether (and how)
+blocking occurred. cite:niaki2020iclab
+
+For our analysis, we combined these snapshots into a single dataset. Our
+concatenated dataset dataset mapped countries to URLs, allowing us to determine
+whether a given URL was marked as blocked in a country during any time in
+ICLab's January 2017 to September 2018 collection period. (See Appendix for the
+full dataset, along with all code used to generate it). In the following
+section, we report on three attempts to produce a metric of policy alignment
+from this dataset.
 
 ** Attempt 1: Strict overlap
 
@@ -223,7 +272,7 @@ and Russia---countries which had only two domains in common in Experiment
 
 First, our metric reveals a large cluster of countries that are mostly similar to
 one another. Most of the countries in our dataset, in fact, lie close together,
-forming one tight component of countries with mostly similar content blocking
+forming one tight component of countries with mostly similar website blocking
 policies.
 
 Second, our metric reveals the connectivity patterns of those countries that are
@@ -296,27 +345,38 @@ domains of measurement in international relations.
 
 * Comparisons to other domains
 
-How does Internet governance, as measured by our metric, relate to other domains
-in international relations? In this section, we evaluate the correlation of our
-metric to existing features of the international relations: trade alliances;
-military alliances; measures of personal and press freedom; and cultural and
-historical ties. We find that our metric is associated with many of these
-features. These correlations suggest that Internet governance is not /sui
-generis/: patterns of alignment in the digital domain are roughly similar to
-those in other, more familiar domains.
+How does Internet governance, as measured by the proxy of website blocking,
+relate to other domains in international relations? In this section, we evaluate
+the correlation of our metric to existing features of the international
+relations: trade alliances; military alliances; measures of personal and press
+freedom; and cultural and historical ties. We find that our metric is associated
+with many of these features. These correlations suggest that Internet governance
+decisions, at least as they relate to website blocking, are not /sui generis/:
+patterns of alignment in the digital domain are roughly similar to those in
+other, more familiar domains.
 
 ** Trade alliances: European Union (EU)
 <<eu>>
 
-The Internet is often described as both a cause and an effect of trade. As a
-cause, the Internet enables trade; countries have an incentive to converge on
-Internet governance policies, as doing so will lower trade barriers. As an
-effect, high levels of trade between two countries create interdependence
-between economies. This interdependence would become more expensive to sustain
-if Internet policies between these two countries were highly discrepant; thus,
-Internet governance policies converge. While real causal relationships are
-likely mixed, both causal pathways give us reason to suspect that trade
-relationships might correlate with shared Internet blocking policies.
+The flow of information has long been analyzed from an international trade
+perspective. Debates over the row of information flows in international trade
+were a primary subject of the Uruguay round of the General Agreement on Tariffs
+and Trade (GATT) beginning 1986, negotiations that ultimately produced the World
+Trade Organization (WTO) cite:gallagher2005first. Despite the primacy of these
+debates, existing metrics struggle to capture specific barriers to international
+data flows, making their effect on trade (and trade's effect on these barriers)
+difficult to quantify.
+
+International data flows are often described as both a cause and an effect of
+trade cite:meltzer2015nternet. As a cause, the Internet enables trade; countries
+have an incentive to converge on Internet governance policies, as doing so will
+lower trade barriers. As an effect, high levels of trade between two countries
+create interdependence between economies. This interdependence would become more
+expensive to sustain if Internet policies between these two countries were
+highly discrepant; thus, Internet governance policies converge. While real
+causal relationships are likely mixed, both causal pathways give us reason to
+suspect that trade relationships might correlate with shared Internet blocking
+policies.
 
 # *** EU vs non-EU
 As a case study, we looked to the European Union. We collected the similarity
@@ -462,13 +522,13 @@ potentially to a more fine-grained metric of website blocking.
 <<commonwealth>>
 
 The correlations we have discussed so far have been suggestive of ties between
-Internet governance policy and other domains, such as press freedom, trade and
+website blocking policy and other domains, such as press freedom, trade and
 military alliance. However, in all cases, our findings are confounded somewhat
 by shared cultural history. Along with their trade alliance, countries in the EU
 share many legal, cultural and historical similarities. The same is true of NATO
 members and, to a degree, of countries with high press freedom.
 
-To what degree can Internet governance policies be explained by cultural
+To what degree can webite blocking policies be explained by cultural
 relationships---shared legal precedent and cultural norms? To examine this
 question, we analyzed Commonwealth countries, an association of 54 member
 states, nearly all former territories of the British Empire. This association
@@ -504,9 +564,9 @@ legal similarities may explain variance in Internet blocking patterns.
 
 * Conclusion
 
-This work presents Internet blocking as a metric of policy alignment. It
-represents policy in a domain not well-studied by other metrics of alignment:
-the realm of Internet governance.
+This work presents Internet blocking as a metric of policy alignment. It begins
+to represent policy in a domain not well-studied by other metrics of alignment:
+Internet governance.
 
 Correlations between our metric and metrics from other domains strong remind us
 that digital layer does not float freely from political realities, nor does it
@@ -518,13 +578,13 @@ and vice versa.
 
 At the same time, our work demonstrates the value and relevance of Internet
 fragmentation to policymakers. Internet fragmentation is not simply a technical
-issue. Internet fragmentation, at least as measured by content blocking, appears
+issue. Internet fragmentation, at least as measured by website blocking, appears
 to be entangled with other aspects of the global order.
 
 As such, future work could attempt to assess the usefulness of this metric as a
 “leading indicator” of changes to international relations. Unlike other metrics
 of global trade, military alliance, or civil rights, we can measure Internet
-blocking continuously. As one country converges with others on content blocking
+blocking continuously. As one country converges with others on website blocking
 patterns, we would expect those countries to be more likely to, for example,
 join a trade pact in the future. To name an example timely as of the time of
 this writing, imagine that the United States blocks the Chinese apps WeChat and
@@ -539,7 +599,7 @@ relations globally.
 
 In the future, we aim to develop our tool to be more comprehensive, covering
 multiple layers of the TCP/IP stack (Table [[tab:layers]]). This metric, which
-covers content blocking alone, focuses on the "application" layer of DNS and
+covers website blocking alone, focuses on the "application" layer of DNS and
 HTTP. Our future work could explore fragmentation "lower down" the stack (e.g.,
 at the protocol layer, where a transition from IPv4 to IPv6 plays out unevenly
 around the globe). Future work could also explore fragmentation "higher up" the
@@ -661,6 +721,13 @@ content to vantage points such as VPNs.
 Seventh, TCP handshakes create some uncertainty as we cannot be sure whether the
 observations constitute actual interference. More data from more vantage points
 could resolve some of this ambiguity.
+
+Eighth, governments may tailor their blocking strategies to particular users.
+ICLab's method of vantage points is unlikely to capture this sort of blocking;
+detecting personalized censorship would require end-users to install and run
+tests themselves. Of course, having end users request sensitive websites, even
+automatically, could put them at great personal risk. Those possibilities could
+be the subject of future work.
 
 Finally, a more fundamental issue with ICLab data is that the blocking events in
 this dataset do not necessarily relate to government action. Individual
