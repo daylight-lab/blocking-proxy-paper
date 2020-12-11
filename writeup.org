@@ -360,8 +360,8 @@ other, more familiar domains.
 The flow of information has long been analyzed from an international trade
 perspective. After World War II, the General Agreement on Tariffs and Trade
 (GATT) dealt only with the international trade of goods cite:gallagher2005first.
-However, international trade in /services/ (defined as "products of economic
-activity that you can’t drop on your foot" cite:economist-services) grew
+However, international trade in /services/, defined as "products of economic
+activity that you can’t drop on your foot" cite:economist-services, grew
 dramatically in the late 20th century, due in part to advances in
 telecommunications technologies. This growth in services trade motivated a new
 set of agreements, including the General Agreement on Trade in Services (GATS)
