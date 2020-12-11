@@ -1,6 +1,6 @@
 # blocking-proxy-paper
 
-Writeup of our work on [website blocking as a proxy of international relatoins](https://github.com/daylight-lab/website-blocking-proxy/).
+Writeup of our work on [website blocking as a proxy of international relations](https://github.com/daylight-lab/website-blocking-proxy/).
 
 The sources file is `writeup.org`. Exporting this source requires emacs with
 org-mode, and
