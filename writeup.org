@@ -365,8 +365,8 @@ bought and sold but cannot be dropped on your foot" cite:economist-services,
 grew dramatically in the late 20th century due to advances in telecommunications
 technologies cite:braman1990trade. This growth in services trade motivated a new
 set of agreements, notably the General Agreement on Trade in Services (GATS)
-agreement in the World Trade Organization (WTO), which aimed to extend its trade
-system to deal with international flows of information cite:gallagher2005first.
+agreement in the World Trade Organization (WTO), which extended its trade system
+to deal with international flows of information cite:gallagher2005first.
 
 Despite the primacy of international data flows in world trade, existing metrics
 struggle to capture specific barriers to international data flows, making their
