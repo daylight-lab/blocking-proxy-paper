@@ -359,15 +359,16 @@ other, more familiar domains.
 
 The flow of information has long been analyzed from an international trade
 perspective. After World War II, the General Agreement on Tariffs and Trade
-(GATT) dealt only with goods. However, in part due to advances in
-telecommunications technologies including the Internet, international trade in
-services grew. Services, defined as "products of economic activity that you
-can’t drop on your foot" cite:economist-services, led ultimately to the GATS
-agreement, which helped to deal with international trade in information
-cite:gallagher2005first. Despite the primacy of this topic in international
-trade, existing metrics struggle to capture specific barriers to international
-data flows, making their effect on trade (and trade's effect on these barriers)
-difficult to quantify.
+(GATT) dealt only with the international trade of goods cite:gallagher2005first.
+However, in part due to advances in telecommunications technologies including
+the Internet, international trade in services grew. Services, defined as
+"products of economic activity that you can’t drop on your foot"
+cite:economist-services, led to a new set of agreements, includng the General
+Agreement on Trade in Services (GATS) agreement in the World Trade Organization.
+These agreements aimed to cope with the international trade in information.
+Despite the primacy of this topic in world trade, existing metrics struggle to
+capture specific barriers to international data flows, making their effect on
+trade (and trade's effect on these barriers) difficult to quantify.
 
 International data flows are often described as both a cause and an effect of
 trade cite:meltzer2015nternet. As a cause, the Internet enables trade; countries
