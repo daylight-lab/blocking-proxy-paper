@@ -364,14 +364,13 @@ However, international trade in /services/, defined as "products of economic
 activity that you can’t drop on your foot" cite:economist-services, grew
 dramatically in the late 20th century, in part due to advances in
 telecommunications technologies. This growth in services trade motivated a new
-set of agreements, noteably the General Agreement on Trade in Services (GATS)
-agreement in the World Trade Organization (WTO), which aimed to deal with
-international flows of information.
+set of agreements, notably the General Agreement on Trade in Services (GATS)
+agreement in the World Trade Organization (WTO), which aimed to extend the WTO's
+trade system to deal with international flows of information.
 
 Despite the primacy of international data flows in world trade, existing metrics
 struggle to capture specific barriers to international data flows, making their
 effect on trade (and trade's effect on these barriers) difficult to quantify.
-
 International data flows are often described as both a cause and an effect of
 trade cite:meltzer2015nternet. As a cause, the Internet enables trade; countries
 have an incentive to converge on Internet governance policies, as doing so will
