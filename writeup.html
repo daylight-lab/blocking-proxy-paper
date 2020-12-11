@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-12-11 Fri 10:56 -->
+<!-- 2020-12-11 Fri 11:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Website Blocking as a Proxy of Policy Alignment</title>
@@ -225,9 +225,9 @@
 by Nick Merrill and Steve Weber
 </p>
 
-<div id="outline-container-org9e71bba" class="outline-2">
-<h2 id="org9e71bba">Abstract</h2>
-<div class="outline-text-2" id="text-org9e71bba">
+<div id="outline-container-orga3a7019" class="outline-2">
+<h2 id="orga3a7019">Abstract</h2>
+<div class="outline-text-2" id="text-orga3a7019">
 <p>
 This work introduces a new metric of policy alignment between states: website
 blocking. Intuitively, we measure the degree to which states block similar
@@ -243,9 +243,9 @@ rapidly than would otherwise be possible.
 </div>
 </div>
 
-<div id="outline-container-orgaca38f9" class="outline-2">
-<h2 id="orgaca38f9">Introduction</h2>
-<div class="outline-text-2" id="text-orgaca38f9">
+<div id="outline-container-orgad6c3e5" class="outline-2">
+<h2 id="orgad6c3e5">Introduction</h2>
+<div class="outline-text-2" id="text-orgad6c3e5">
 <p>
 In international politics and political economy, the primitive unit of analysis
 is frequently the <i>state</i>. Early in the 1990s, popular rhetoric imagined that
@@ -287,7 +287,7 @@ policy alignment to fill in the gaps.
 </p>
 
 
-<div id="org7c124c7" class="figure">
+<div id="org561809f" class="figure">
 <p><img src="./img/proxy-model.jpeg" alt="proxy-model.jpeg" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Different metrics of policy alignment create connected graphs of countries. Our project adds a new topic area: the Internet.</p>
@@ -323,9 +323,9 @@ countries with low policy alignment (<a href="#citeproc_bib_item_10">De Mesquita
 </div>
 
 
-<div id="outline-container-orgebcf177" class="outline-3">
-<h3 id="orgebcf177">Website blocking as a metric of policy alignment</h3>
-<div class="outline-text-3" id="text-orgebcf177">
+<div id="outline-container-org75cfb39" class="outline-3">
+<h3 id="org75cfb39">Website blocking as a metric of policy alignment</h3>
+<div class="outline-text-3" id="text-org75cfb39">
 <p>
 The Internet has emerged as a key domain of conflict and cooperation between
 states. The way states (and other actors) govern in this shared domain is widely
@@ -371,9 +371,9 @@ geopolitical goals.
 </div>
 </div>
 
-<div id="outline-container-org3c72956" class="outline-2">
-<h2 id="org3c72956">Methods</h2>
-<div class="outline-text-2" id="text-org3c72956">
+<div id="outline-container-orgad74b3f" class="outline-2">
+<h2 id="orgad74b3f">Methods</h2>
+<div class="outline-text-2" id="text-orgad74b3f">
 <p>
 From a technical standpoint, there are a variety of methods for blocking
 webpages. One option is to manipulate domain name system (DNS) messages in order
@@ -410,9 +410,9 @@ from this dataset.
 </p>
 </div>
 
-<div id="outline-container-org0786527" class="outline-3">
-<h3 id="org0786527">Attempt 1: Strict overlap</h3>
-<div class="outline-text-3" id="text-org0786527">
+<div id="outline-container-org3443cd8" class="outline-3">
+<h3 id="org3443cd8">Attempt 1: Strict overlap</h3>
+<div class="outline-text-3" id="text-org3443cd8">
 <p>
 The simplest metric for policy overlap would be to measure exact overlaps in
 blocked websites between countries. When two countries block the same url (e.g.,
@@ -427,9 +427,9 @@ yields no overlaps at all.
 </div>
 </div>
 
-<div id="outline-container-org3a87a4d" class="outline-3">
-<h3 id="org3a87a4d">Attempt 2: Fuzzy overlap</h3>
-<div class="outline-text-3" id="text-org3a87a4d">
+<div id="outline-container-org602cd0b" class="outline-3">
+<h3 id="org602cd0b">Attempt 2: Fuzzy overlap</h3>
+<div class="outline-text-3" id="text-org602cd0b">
 <p>
 To get around the lack of strict overlaps in website blocking, we next attempted
 to measure "fuzzy" overlaps in blocking between countries by considering only
@@ -447,9 +447,9 @@ Russia have 121 and 340 blocking events in our dataset, respectively, but only
 </div>
 </div>
 
-<div id="outline-container-org8d58d45" class="outline-3">
-<h3 id="org8d58d45">Attempt 3: Overlap in content of blocked webpages</h3>
-<div class="outline-text-3" id="text-org8d58d45">
+<div id="outline-container-org397dd4c" class="outline-3">
+<h3 id="org397dd4c">Attempt 3: Overlap in content of blocked webpages</h3>
+<div class="outline-text-3" id="text-org397dd4c">
 <p>
 Not only do the Experiment 1 and Experiment 2 methods produce minimal variation
 in the data, they also lose some important sources of variation: the themes of
@@ -499,7 +499,7 @@ block different numbers of sites.
 </p>
 
 <p>
-As an example, see a Figure <a href="#org5143286">2</a>, in which we see the relative blocking
+As an example, see a Figure <a href="#org24bfd4d">2</a>, in which we see the relative blocking
 activity of four countries that are all very differently situated in the
 international order. This selection of countries indicates that there is
 meaningful variation between countries in our dataset. Motivated by this
@@ -509,7 +509,7 @@ countries.
 
 
 
-<div id="org5143286" class="figure">
+<div id="org24bfd4d" class="figure">
 <p><img src="./img/4country.png" alt="4country.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Proportion of websites blocked in Turkey, Russia, India and South Korea across a subset of Fortiguard categories. (Our dataset contained 78 categories for each country; we display only a few here for demonstration). We observe that these different countries block websites of various categories in different proportions. There appears to be meaningful variation in the data across countries.</p>
@@ -531,9 +531,9 @@ and Russia&#x2014;countries which had only two domains in common in Experiment
 </div>
 </div>
 
-<div id="outline-container-orge4fd935" class="outline-2">
-<h2 id="orge4fd935">Our measure</h2>
-<div class="outline-text-2" id="text-orge4fd935">
+<div id="outline-container-org97e3e2d" class="outline-2">
+<h2 id="org97e3e2d">Our measure</h2>
+<div class="outline-text-2" id="text-org97e3e2d">
 <div id="fig1"></div>
 <script>
   index.InteroperabilityVisualization({
@@ -554,7 +554,7 @@ and Russia&#x2014;countries which had only two domains in common in Experiment
   });
 </script>
 
-<div id="orge8f2cdd" class="figure">
+<div id="org85c6b93" class="figure">
 <p><img src="./img/dummy.png" alt="dummy.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Force-directed graph of similarities in our dataset.</p>
@@ -617,7 +617,7 @@ similarities only with Lichtenstein, for which <i>News and Media</i> sites compr
   });
 </script>
 
-<div id="org930f38b" class="figure">
+<div id="orgb060c91" class="figure">
 <p><img src="./img/dummy.png" alt="dummy.png" />
 </p>
 <p><span class="figure-number">Figure 4: </span>China's blocking patterns are relatively unique, sharing notable similarities only with Hong Kong and, to a lesser degree, with Lichtenstein.</p>
@@ -629,7 +629,7 @@ mostly similar; one large cluster dominates Internet policy by our metric's
 measure. A few websites demonstrate a moderate volume of blocking while
 retaining a degree of interoperability with this main block. Vietnam, Serbia,
 Singapore, Belize, Taiwan, Bulgaria, Ukraine and Hong Kong all surround the the
-perimeter of this main, interoperable Internet (Figure <a href="#orge8f2cdd">3</a>),
+perimeter of this main, interoperable Internet (Figure <a href="#org85c6b93">3</a>),
 retaining moderately high similarities with countries in the center. These
 "perimeter" countries indicate important variations in our dataset, perhaps
 signaling a dual risk and opportunity of deviating from the global Internet on
@@ -649,9 +649,9 @@ domains of measurement in international relations.
 </div>
 </div>
 
-<div id="outline-container-org4066bfe" class="outline-2">
-<h2 id="org4066bfe">Comparisons to other domains</h2>
-<div class="outline-text-2" id="text-org4066bfe">
+<div id="outline-container-orgbc4a42f" class="outline-2">
+<h2 id="orgbc4a42f">Comparisons to other domains</h2>
+<div class="outline-text-2" id="text-orgbc4a42f">
 <p>
 How does Internet governance, as measured by the proxy of website blocking,
 relate to other domains in international relations? In this section, we evaluate
@@ -665,26 +665,30 @@ other, more familiar domains.
 </p>
 </div>
 
-<div id="outline-container-org5a7bc17" class="outline-3">
-<h3 id="org5a7bc17">Trade alliances: European Union (EU)</h3>
-<div class="outline-text-3" id="text-org5a7bc17">
+<div id="outline-container-org219b7ad" class="outline-3">
+<h3 id="org219b7ad">Trade alliances: European Union (EU)</h3>
+<div class="outline-text-3" id="text-org219b7ad">
 <p>
-<a id="org7497b33"></a>
+<a id="org25d6090"></a>
 </p>
 
 <p>
 The flow of information has long been analyzed from an international trade
 perspective. After World War II, the General Agreement on Tariffs and Trade
 (GATT) dealt only with the international trade of goods (<a href="#citeproc_bib_item_15">Gallagher, 2005</a>).
-However, in part due to advances in telecommunications technologies including
-the Internet, international trade in services grew. Services, defined as
-"products of economic activity that you can’t drop on your foot"
-(<a href="#citeproc_bib_item_6">Bishop, 2004</a>), led to a new set of agreements, includng the General
-Agreement on Trade in Services (GATS) agreement in the World Trade Organization.
-These agreements aimed to cope with the international trade in information.
-Despite the primacy of this topic in world trade, existing metrics struggle to
-capture specific barriers to international data flows, making their effect on
-trade (and trade's effect on these barriers) difficult to quantify.
+However, international trade in <i>services</i> (defined as "products of economic
+activity that you can’t drop on your foot" (<a href="#citeproc_bib_item_6">Bishop, 2004</a>)) grew
+dramatically in the late 20th century, due in part to advances in
+telecommunications technologies. This growth in services trade motivated a new
+set of agreements, including the General Agreement on Trade in Services (GATS)
+agreement in the World Trade Organization, which aimed to deal with
+international flows of information.
+</p>
+
+<p>
+Despite the primacy of international data flows in world trade, existing metrics
+struggle to capture specific barriers to international data flows, making their
+effect on trade (and trade's effect on these barriers) difficult to quantify.
 </p>
 
 <p>
@@ -721,9 +725,9 @@ p = 0.41).
 </p>
 </div>
 
-<div id="outline-container-org037ae80" class="outline-4">
-<h4 id="org037ae80">Takeaways</h4>
-<div class="outline-text-4" id="text-org037ae80">
+<div id="outline-container-org35372f6" class="outline-4">
+<h4 id="org35372f6">Takeaways</h4>
+<div class="outline-text-4" id="text-org35372f6">
 <p>
 We find that EU countries are overall more similar to one another than they are
 to the rest of the world. There are a few possible explanations for this
@@ -765,9 +769,9 @@ similar blocking profiles.
 </div>
 </div>
 
-<div id="outline-container-org246a4ea" class="outline-3">
-<h3 id="org246a4ea">Military alliances</h3>
-<div class="outline-text-3" id="text-org246a4ea">
+<div id="outline-container-org6d68746" class="outline-3">
+<h3 id="org6d68746">Military alliances</h3>
+<div class="outline-text-3" id="text-org6d68746">
 <p>
 Increasing concern about “cyberwar” makes it plain that many see the Internet as
 a key tool in military conflict. However, military alliances signal policy
@@ -804,9 +808,9 @@ significance (U=814, p=0.084).
 </div>
 
 
-<div id="outline-container-org6e2a739" class="outline-4">
-<h4 id="org6e2a739">Takeaways</h4>
-<div class="outline-text-4" id="text-org6e2a739">
+<div id="outline-container-orgdeedb78" class="outline-4">
+<h4 id="orgdeedb78">Takeaways</h4>
+<div class="outline-text-4" id="text-orgdeedb78">
 <p>
 NATO countries are significantly more similar to one another in Internet
 blocking patterns than they are to non-NATO countries. It is interesting to note
@@ -835,9 +839,9 @@ less coherent, less institutionally robust alliance than is NATO
 </div>
 </div>
 
-<div id="outline-container-org72a6ad6" class="outline-3">
-<h3 id="org72a6ad6">Personal and press freedom</h3>
-<div class="outline-text-3" id="text-org72a6ad6">
+<div id="outline-container-org1896854" class="outline-3">
+<h3 id="org1896854">Personal and press freedom</h3>
+<div class="outline-text-3" id="text-org1896854">
 <p>
 Reporters Without Borders’ World Press Freedom Index (<a href="#citeproc_bib_item_7">Borders, 2020</a>) quantifies the degree of
 freedom available to journalists in 180 countries. We find a moderate positive
@@ -858,9 +862,9 @@ r(156) = 0.85, p&lt;0.001.
 </p>
 </div>
 
-<div id="outline-container-org74a02de" class="outline-4">
-<h4 id="org74a02de">Takeaways</h4>
-<div class="outline-text-4" id="text-org74a02de">
+<div id="outline-container-org811350c" class="outline-4">
+<h4 id="org811350c">Takeaways</h4>
+<div class="outline-text-4" id="text-org811350c">
 <p>
 The presence of a positive correlation between blocking similarities implies
 that changes to our Internet blocking metric could predict changes to press
@@ -887,11 +891,11 @@ potentially to a more fine-grained metric of website blocking.
 </div>
 </div>
 
-<div id="outline-container-org42e905c" class="outline-3">
-<h3 id="org42e905c">Cultural and historical ties: Commonwealth countries</h3>
-<div class="outline-text-3" id="text-org42e905c">
+<div id="outline-container-orgb9648e3" class="outline-3">
+<h3 id="orgb9648e3">Cultural and historical ties: Commonwealth countries</h3>
+<div class="outline-text-3" id="text-orgb9648e3">
 <p>
-<a id="orged8d580"></a>
+<a id="org900e5ee"></a>
 </p>
 
 <p>
@@ -927,9 +931,9 @@ outside-Commonwealth (M=0.89) group (U=9922, p=0.59).
 </p>
 </div>
 
-<div id="outline-container-orgb6fb782" class="outline-4">
-<h4 id="orgb6fb782">Takeaways</h4>
-<div class="outline-text-4" id="text-orgb6fb782">
+<div id="outline-container-orgf5b8b1d" class="outline-4">
+<h4 id="orgf5b8b1d">Takeaways</h4>
+<div class="outline-text-4" id="text-orgf5b8b1d">
 <p>
 Our finding implies that Commonwealth heritage is not reflected in website
 blocking. This throws into question the degree to which our previous
@@ -951,9 +955,9 @@ legal similarities may explain variance in Internet blocking patterns.
 </div>
 </div>
 
-<div id="outline-container-org0c9fd54" class="outline-2">
-<h2 id="org0c9fd54">Conclusion</h2>
-<div class="outline-text-2" id="text-org0c9fd54">
+<div id="outline-container-org8036e5d" class="outline-2">
+<h2 id="org8036e5d">Conclusion</h2>
+<div class="outline-text-2" id="text-org8036e5d">
 <p>
 This work presents Internet blocking as a metric of policy alignment. It begins
 to represent policy in a domain not well-studied by other metrics of alignment:
@@ -999,7 +1003,7 @@ relations globally.
 
 <p>
 In the future, we aim to develop our tool to be more comprehensive, covering
-multiple layers of the TCP/IP stack (Table <a href="#org924816d">1</a>). This metric, which
+multiple layers of the TCP/IP stack (Table <a href="#org342ae10">1</a>). This metric, which
 covers website blocking alone, focuses on the "application" layer of DNS and
 HTTP. Our future work could explore fragmentation "lower down" the stack (e.g.,
 at the protocol layer, where a transition from IPv4 to IPv6 plays out unevenly
@@ -1008,7 +1012,7 @@ stack, looking at laws that limit data flow or enforce Internet sovereignty
 (<a href="#citeproc_bib_item_5">Bejtlich <i>et al.</i>, 2015</a>).
 </p>
 
-<table id="org924816d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org342ae10" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-bottom"><span class="table-number">Table 1:</span> A "layer" model of the Internet, with possible metrics for each layer. The work we present here only covers Layer 4.</caption>
 
 <colgroup>
@@ -1071,9 +1075,9 @@ themselves act as harbingers of changes to the international order.
 </div>
 </div>
 
-<div id="outline-container-org31d5a09" class="outline-2">
-<h2 id="org31d5a09">Appendix</h2>
-<div class="outline-text-2" id="text-org31d5a09">
+<div id="outline-container-orgf00820f" class="outline-2">
+<h2 id="orgf00820f">Appendix</h2>
+<div class="outline-text-2" id="text-orgf00820f">
 <div id="fig3"></div>
 <script>
   index.InteroperabilityVisualization({
@@ -1098,17 +1102,17 @@ themselves act as harbingers of changes to the international order.
 </script>
 </div>
 
-<div id="outline-container-orgaec94c1" class="outline-3">
-<h3 id="orgaec94c1">Data, code and visualization</h3>
-<div class="outline-text-3" id="text-orgaec94c1">
+<div id="outline-container-org9a8b24a" class="outline-3">
+<h3 id="org9a8b24a">Data, code and visualization</h3>
+<div class="outline-text-3" id="text-org9a8b24a">
 <p>
 Our metric, and the code used to generate it, are <a href="https://github.com/daylight-lab/website-blocking-proxy">available via GitHub</a>. The code that powers our interactive visualizations are also <a href="https://github.com/lilybhattacharjee5/interoperability-demo">accessible via GitHub</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-org1054346" class="outline-3">
-<h3 id="org1054346">Data cleaning</h3>
-<div class="outline-text-3" id="text-org1054346">
+<div id="outline-container-orgc0fabb3" class="outline-3">
+<h3 id="orgc0fabb3">Data cleaning</h3>
+<div class="outline-text-3" id="text-orgc0fabb3">
 <p>
 We had 12 datasets (.csv files) ranging from January 2017 to September 2018 which
 amounted to a total of 50,436,865 observations. Each observation represents a
@@ -1136,13 +1140,13 @@ with 78 categories of website blocking across 55 countries.
 </div>
 </div>
 
-<div id="outline-container-org1f9357f" class="outline-3">
-<h3 id="org1f9357f">Limitations</h3>
-<div class="outline-text-3" id="text-org1f9357f">
+<div id="outline-container-org6130f08" class="outline-3">
+<h3 id="org6130f08">Limitations</h3>
+<div class="outline-text-3" id="text-org6130f08">
 </div>
-<div id="outline-container-orgc79d34a" class="outline-4">
-<h4 id="orgc79d34a">ICLab data</h4>
-<div class="outline-text-4" id="text-orgc79d34a">
+<div id="outline-container-org8eaae7b" class="outline-4">
+<h4 id="org8eaae7b">ICLab data</h4>
+<div class="outline-text-4" id="text-org8eaae7b">
 <p>
 While ICLab does a good job at detecting when a website is blocked, there are a
 few limitations that hinder our ability to reliably decide if a given webpage is
@@ -1223,9 +1227,9 @@ countries.
 </div>
 </div>
 
-<div id="outline-container-orgff58855" class="outline-4">
-<h4 id="orgff58855">Content categorization</h4>
-<div class="outline-text-4" id="text-orgff58855">
+<div id="outline-container-orgf5b0c60" class="outline-4">
+<h4 id="orgf5b0c60">Content categorization</h4>
+<div class="outline-text-4" id="text-orgf5b0c60">
 <p>
 FortiGuard does not capture the fine-grained thematic content of a website.
 FortiGuard classifies the Facebook BlackLivesMatter group as "social
@@ -1262,9 +1266,9 @@ a proxy for policy.
 </div>
 </div>
 
-<div id="outline-container-orgd32421d" class="outline-4">
-<h4 id="orgd32421d">False negatives</h4>
-<div class="outline-text-4" id="text-orgd32421d">
+<div id="outline-container-org794d342" class="outline-4">
+<h4 id="org794d342">False negatives</h4>
+<div class="outline-text-4" id="text-org794d342">
 <p>
 One epistemic issue in our dataset is possible false negatives. As an example of
 when this issue might crop up, consider China and India. China and india both
@@ -1282,9 +1286,9 @@ within apps then with specific URLs.
 </div>
 </div>
 
-<div id="outline-container-org1935a89" class="outline-2">
-<h2 id="org1935a89">About the authors</h2>
-<div class="outline-text-2" id="text-org1935a89">
+<div id="outline-container-org06a1208" class="outline-2">
+<h2 id="org06a1208">About the authors</h2>
+<div class="outline-text-2" id="text-org06a1208">
 <p>
 <b>Nick Merrill</b> directs the Daylight Lab at the UC Berkeley Center for Long-Term Cybersecurity.
 </p>
@@ -1304,9 +1308,9 @@ E-mail: steven_weber at berkeley dot edu
 </div>
 </div>
 
-<div id="outline-container-orgae062ef" class="outline-2">
-<h2 id="orgae062ef">Acknowledgements</h2>
-<div class="outline-text-2" id="text-orgae062ef">
+<div id="outline-container-orgd8c8217" class="outline-2">
+<h2 id="orgd8c8217">Acknowledgements</h2>
+<div class="outline-text-2" id="text-orgd8c8217">
 <p>
 We would like to thank Akhilesh Pandita for his data analysis and Lily
 Bhattacharjee for her work building the data visualizations. We would also like
@@ -1351,7 +1355,7 @@ paper a great deal.
 <div id="postamble" class="status">
 <p class="date">Date: 2020-08-11 Tue 00:00</p>
 <p class="author">Author: ffff</p>
-<p class="date">Created: 2020-12-11 Fri 10:56</p>
+<p class="date">Created: 2020-12-11 Fri 11:08</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
