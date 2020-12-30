@@ -8,24 +8,28 @@
     <script type="text/javascript" src="js/index.bundle.js"></script>
   </head>
   <body>
-    <div id="fig1"></div>
+    <div id="fig3"></div>
     <script>
      index.InteroperabilityVisualization({
-       visId: 'fig1',
+       visId: 'fig3',
        numIncrements: 5,
        minSimilarity: 0,
        maxSimilarity: 1,
        digitsRounded: 2,
        colorScheme: "schemeBlues",
-       defaultMode: "force",
-       enabledModes: ["force"],
-       tableProperties: ["similarity"],
+       defaultMode: "geomap",
+       enabledModes: ["geomap"],
        showTable: false,
-       forceProperties: {
+       geomapProperties: {
          visHeight: "800px",
-         linkMultiplier: 3,
-       }
+         defaultFill: '#d3d3d3',
+         selectedFill: '#228B22',
+         highlightedFill: 'orange',
+         highlightBorderWidth: 2,
+         selectedCountry: "CAN",
+       },
      });
     </script>
+
   </body>
 </html>
