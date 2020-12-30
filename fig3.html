@@ -1,0 +1,32 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <script type="text/javascript" src="js/index.bundle.js"></script>
+  </head>
+  <body>
+    <div id="fig1"></div>
+    <script>
+     index.InteroperabilityVisualization({
+       visId: 'fig1',
+       numIncrements: 5,
+       minSimilarity: 0,
+       maxSimilarity: 1,
+       digitsRounded: 2,
+       colorScheme: "schemeBlues",
+       defaultMode: "force",
+       enabledModes: ["force"],
+       tableProperties: ["similarity"],
+       showTable: false,
+       forceProperties: {
+         visHeight: "800px",
+         linkMultiplier: 3,
+       }
+     });
+    </script>
+  </body>
+</html>
